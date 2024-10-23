@@ -19,20 +19,20 @@ public class SortService<E> {
             System.out.print(i + ", ");
         }
         System.out.println();
-       // sort(collection);
+        sort(collection);
 
 
 
     }
 
     @SuppressWarnings("rawtypes")
-    public <E extends Comparable> Collection<E> sort(Collection<E> collection) {
+    public static <E extends Comparable> Collection<E> sort(Collection<E> collection) {
 
        List<E> coll = new ArrayList<>(collection);
 
         for(int s = collection.size()/2; s > 0; s /= 2){//определяем шаг для прохода путем деления предыдущего шага на 2 TODO опэкспериментировать с делением на 1,247 и вообще с шагом
             for(int i = s; i < collection.size(); i++){
-                for(int j = i - s; j >= 0  && coll.get(j).compareTo(coll.get(j + s)) > 0; j -= s){
+                for(int j = i - s; j >= 0  && coll.get(j).compareTo(coll.get(j + s)) < 0; j -= s){
                     //для кастомных классов compareTo() collection.get(j).compareTo(collection.get(j + s)) < 0
 
                     Collections.swap(coll, j, j + s);
