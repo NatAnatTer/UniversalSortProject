@@ -18,6 +18,6 @@ public class Application {
     }
 
     public void sortData(){
-        sortService.sort();
+     //   sortService.sort(); TODO add collection parameter
     }
 }
