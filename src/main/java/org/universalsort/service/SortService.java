@@ -7,8 +7,7 @@ import org.universalsort.entity.CarPowerComparator;
 import java.util.*;
 
 
-
-public class SortService<E> {
+public class SortService {
 
     public static void main(String[] args) {
 
@@ -35,9 +34,6 @@ public class SortService<E> {
         cars.add(new Car(3.7, "Model15", 2000));
         cars.add(new Car(1.5, "Model12", 2024));
 
-
-
-
         Comparator<Car> comp = new CarPowerComparator();
         System.out.println("sorted: " + sort(cars, comp));
         Comparator<Car> compMod = new CarModelComparator();
@@ -45,17 +41,15 @@ public class SortService<E> {
 
     }
 
- //   @SuppressWarnings("rawtypes")
-    public static <E extends Comparable> Collection<E> sort(Collection<E> collection, Comparator<E> comparator) {
+
+    public static <E> Collection<E> sort(Collection<E> collection, Comparator<E> comparator) {
 
        List<E> coll = new ArrayList<>(collection);
 
         for(int s = collection.size()/2; s > 0; s /= 2){
             for(int i = s; i < collection.size(); i++){
-                for(int j = i - s; j >= 0  && comparator.compare( coll.get(j),coll.get(j + s)) > 0; j -= s){ //coll.get(j).compareTo(coll.get(j + s)) > 0
-
+                for(int j = i - s; j >= 0  && comparator.compare( coll.get(j),coll.get(j + s)) > 0; j -= s){
                     Collections.swap(coll, j, j + s);
-
                 }
             }
             for (E ind: coll) {
@@ -65,6 +59,4 @@ public class SortService<E> {
         }
         return coll;
     }
-
-
 }
