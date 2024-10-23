@@ -4,7 +4,7 @@ import java.util.*;
 
 
 
-public class SortService {
+public class SortService<E> {
 
     public static void main(String[] args) {
 
@@ -19,24 +19,31 @@ public class SortService {
             System.out.print(i + ", ");
         }
         System.out.println();
-        sort(collection);
+       // sort(collection);
+
+
 
     }
 
-    public static void sort(ArrayList<Integer> collection) {
-        //s (step), i, j  (indexOfElement)
+    @SuppressWarnings("rawtypes")
+    public <E extends Comparable> Collection<E> sort(Collection<E> collection) {
 
-        for(int s = collection.size()/2; s > 0; s /= 2){ //определяем шаг для прохода путем деления предыдущего шага на 2 TODO опэкспериментировать с делением на 1,247 и вообще с шагом
+       List<E> coll = new ArrayList<>(collection);
+
+        for(int s = collection.size()/2; s > 0; s /= 2){//определяем шаг для прохода путем деления предыдущего шага на 2 TODO опэкспериментировать с делением на 1,247 и вообще с шагом
             for(int i = s; i < collection.size(); i++){
-                for(int j = i - s; j >= 0 && collection.get(j) > collection.get(j + s); j -= s){ //для кастомных классов compareTo() collection.get(j).compareTo(collection.get(j + s)) < 0
-                    Collections.swap(collection, j, j + s);
+                for(int j = i - s; j >= 0  && coll.get(j).compareTo(coll.get(j + s)) > 0; j -= s){
+                    //для кастомных классов compareTo() collection.get(j).compareTo(collection.get(j + s)) < 0
+
+                    Collections.swap(coll, j, j + s);
                 }
             }
-            for (int ind: collection) {
+            for (E ind: collection) {
                 System.out.print(ind + ", ");
             }
             System.out.println();
         }
+        return coll;
     }
 
 
