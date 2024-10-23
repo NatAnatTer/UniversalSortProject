@@ -1,5 +1,7 @@
 package org.universalsort.entity;
 
+import java.util.Comparator;
+
 public class Car implements Comparable<Car>{
     double power;
     String model;
@@ -13,13 +15,6 @@ public class Car implements Comparable<Car>{
 
     @Override
     public int compareTo(Car o) {
-       /*
-        if(this.power > o.power){
-            return 1;
-        } else if (this.power < o.power) {
-            return -1;
-        } else return  0;
-*/
         return Double.compare(this.power, o.power);
 
     }
@@ -28,8 +23,10 @@ public class Car implements Comparable<Car>{
     public String toString() {
         return "Car{" +
                 "power=" + power +
-              //  ", model='" + model + '\'' +
-              //  ", productionYear=" + productionYear +
+                ", model='" + model + '\'' +
+             //   ", productionYear=" + productionYear +
                 '}';
     }
 }
+
+
