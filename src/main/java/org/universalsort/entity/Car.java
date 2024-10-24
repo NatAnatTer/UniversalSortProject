@@ -22,7 +22,7 @@ public class Car implements Comparable<Car>{
                 "power=" + power +
                 ", model='" + model + '\'' +
                 ", productionYear=" + productionYear +
-                '}';
+                '}' + '\n';
     }
 
     public double getPower() {
