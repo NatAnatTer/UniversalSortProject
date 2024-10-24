@@ -3,6 +3,9 @@ package org.universalsort;
 import org.universalsort.service.ReadWriteService;
 import org.universalsort.service.SortService;
 
+import java.util.Collection;
+import java.util.Comparator;
+
 public class Application {
 
     private final ReadWriteService readWriteService;
@@ -17,7 +20,11 @@ public class Application {
         readWriteService.read();
     }
 
-    public void sortData(){
-     //   sortService.sort(); TODO add collection parameter
+    public <E extends Comparable> void  sortData(Collection<E> collection){
+        sortService.sort(collection);
     }
+    public <E extends Comparable> void  sortData(Collection<E> collection, Comparator<E> comparator){
+        sortService.sort(collection, comparator);
+    }
+
 }

@@ -15,7 +15,7 @@ public class Main {
             int numCmd = scanner.nextInt();
             switch (numCmd){
                 case 1 -> application.inputData();
-                case 2 -> application.sortData();
+               // case 2 -> application.sortData(); // создаем диалог с пользователем, в котором спрашиваем 1. Поиск, 2. Сортировка, 3. сохранить коллекцию в файл
                 case 4 -> keepRunning = false;
                 default -> System.out.printf("Неизвестный номер команды %s%n", numCmd);
             }
