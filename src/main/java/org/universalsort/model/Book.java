@@ -11,10 +11,6 @@ public class Book extends UserClass implements Comparable<Book> {
         this.pagesCount = builder.pagesCount;
     }
 
-    public Book() {
-
-    }
-
     public String getAuthor() {
         return author;
     }
@@ -30,6 +26,15 @@ public class Book extends UserClass implements Comparable<Book> {
     @Override
     public int compareTo(Book book) {
         return this.author.compareTo(book.author);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "author='" + author + '\'' +
+                ", name='" + name + '\'' +
+                ", pagesCount=" + pagesCount +
+                '}';
     }
 
     public static class Builder {
@@ -63,7 +68,12 @@ public class Book extends UserClass implements Comparable<Book> {
         }
 
         private boolean validateEmployee() {
-            return (pagesCount <= 0 && name != null && name.trim().isEmpty() && author != null && !author.trim().isEmpty());
+            boolean pageCounts = pagesCount >= 0;
+            boolean nameNull = name != null;
+            boolean nameEmpty = !name.trim().isEmpty();
+            boolean authorNull = author != null;
+            boolean authorEmpty = !author.trim().isEmpty();
+            return (pageCounts && nameNull && nameEmpty && authorNull && authorEmpty);
         }
     }
 }

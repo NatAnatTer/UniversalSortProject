@@ -28,6 +28,15 @@ public class RootCrop extends UserClass implements Comparable<RootCrop> {
         return this.type.compareTo(rootCrop.getType());
     }
 
+    @Override
+    public String toString() {
+        return "RootCrop{" +
+                "type='" + type + '\'' +
+                ", weight=" + weight +
+                ", color='" + color + '\'' +
+                '}';
+    }
+
     public static class Builder {
         private String type;
         private double weight;
@@ -59,7 +68,7 @@ public class RootCrop extends UserClass implements Comparable<RootCrop> {
         }
 
         private boolean validateEmployee() {
-            return (weight <= 0 && type != null && type.trim().isEmpty() && color != null && !color.trim().isEmpty());
+            return (weight >= 0 && type != null && !type.trim().isEmpty() && color != null && !color.trim().isEmpty());
         }
     }
 }
