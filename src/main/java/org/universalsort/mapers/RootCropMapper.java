@@ -11,7 +11,7 @@ public class RootCropMapper implements Mapper {
         List<RootCrop> rootCrops = new ArrayList<>();
         for (String s : list) {
             String[] fields = s.split(" ");
-            RootCrop rootCrop = new RootCrop.Builder().type(fields[0]).weight(Double.parseDouble(fields[1])).color(fields[2]).build();
+            RootCrop rootCrop = RootCrop.builder().type(fields[0]).weight(Double.parseDouble(fields[1])).color(fields[2]).build();
             rootCrops.add(rootCrop);
         }
         return rootCrops;

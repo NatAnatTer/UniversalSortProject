@@ -11,8 +11,8 @@ public class BookMapper implements Mapper {
         List<Book> books = new ArrayList<>();
         for (String s : list) {
             String[] fields = s.split(" ");
-            Book book = new Book.Builder().author(fields[0]).name(fields[1]).pagesCount(Integer.parseInt(fields[2])).build();
-            books.add(book);
+            Book book = Book.builder().author(fields[0]).name(fields[1]).pagesCount(Integer.parseInt(fields[2])).build();
+            books.add(book); //можно использовать статические методы из класса Validtor
         }
         return books;
     }
