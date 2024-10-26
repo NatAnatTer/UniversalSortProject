@@ -12,7 +12,8 @@ public class Car extends UserClass implements Comparable<Car> {
 
     @Override
     public int compareTo(Car car) {
-        return this.model.compareTo(car.getModel());
+
+        return Integer.compare(this.productionYear, car.productionYear);
     }
 
     @Override

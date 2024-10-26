@@ -11,8 +11,9 @@ public class RootCrop extends UserClass implements Comparable<RootCrop> {
     private final String color;
 
     @Override
-    public int compareTo(RootCrop rootCrop) {
-        return this.type.compareTo(rootCrop.getType());
+    public double compareTo(RootCrop rootCrop) {
+
+        return Double.compare(this.weight, rootCrop.weight);
     }
 
     @Override

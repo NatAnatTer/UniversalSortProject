@@ -12,7 +12,7 @@ public class Book extends UserClass implements Comparable<Book> {
 
     @Override
     public int compareTo(Book book) {
-        return this.author.compareTo(book.author);
+        return Integer.compare(this.pagesCount, book.pagesCount);
     }
 
     @Override
