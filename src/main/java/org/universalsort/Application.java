@@ -10,6 +10,7 @@ import org.universalsort.service.ReadWriteService;
 import org.universalsort.service.SortService;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 

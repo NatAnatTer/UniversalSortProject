@@ -17,11 +17,11 @@ public class ConsoleReader implements Reader {
         System.out.println("Для прекращения ввода. Введите команду - stop");
         while (true) {
             author = new Scanner(System.in).nextLine();
-            if (author.equals("stop")) {
+            if (author.equalsIgnoreCase("stop")) {
                 break;
             }
             name = new Scanner(System.in).nextLine();
-            if (name.equals("stop")) {
+            if (name.equalsIgnoreCase("stop")) {
                 break;
             }
             pageCount = new Scanner(System.in).nextInt();

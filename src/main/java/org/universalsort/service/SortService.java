@@ -37,8 +37,8 @@ public class SortService {
     public static <T extends Number & Comparable<T>> Collection<T> sortEven(Collection<T> collection) {
         List<T> arrayList = new ArrayList<>(collection);
         int index = 0;
-        for (int s = (collection.size() + index) / 2; s > 0; s -= 1) {
-            for (int i = s; i < collection.size(); i++) {
+        for (int s = (arrayList.size() + index) / 2; s > 0; s -= 1) {
+            for (int i = s; i < arrayList.size(); i++) {
                 for (int j = i - s;
                      j >= 0
                              && arrayList.get(j).compareTo(arrayList.get(j + s)) > 0
@@ -53,7 +53,6 @@ public class SortService {
 
                 s = collection.size();
                 if(index < collection.size()*2)  index += 1;
-                    System.out.println("again" + index);
             }
         }
         return arrayList;

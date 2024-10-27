@@ -2,8 +2,8 @@ package org.universalsort.service;
 
 import org.universalsort.datatypes.BookDataType;
 import org.universalsort.datatypes.CarDataType;
-import org.universalsort.datatypes.DataType;
 import org.universalsort.datatypes.RootCropDataType;
+import org.universalsort.datatypes.DataType;
 import org.universalsort.model.Book;
 import org.universalsort.model.Car;
 import org.universalsort.model.RootCrop;
