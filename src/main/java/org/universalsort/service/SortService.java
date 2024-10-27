@@ -52,8 +52,8 @@ public class SortService {
             if (s == 1 && !isSortedEven(arrayList)) {
 
                 s = collection.size();
-                index += 100;
-                System.out.println("again" + index);
+                if(index < collection.size()*2)  index += 1;
+                    System.out.println("again" + index);
             }
         }
         return arrayList;
