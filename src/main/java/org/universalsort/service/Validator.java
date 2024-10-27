@@ -9,7 +9,7 @@ public class Validator {
     static final String INCORRECT_DATA = "Некорректный формат входных данных";
     static final String DELIMITER_NOT_CONTAINS = "Строка не содержит ни одного разделителя";
 
-    static String checkString(String string) {
+    public static String checkString(String string) {
         if (string == null || string == "") {
             System.out.println("Пустая строка, нечего парсить");
             return null;
@@ -43,11 +43,11 @@ public class Validator {
         }
     }
 
-    static String[] convertString(String string) {
+    public static String[] convertString(String string) {
         return string.split(DELIMITER);
     }
 
-    static Integer returnIntValue(String string) {
+    public static Integer returnIntValue(String string) {
         int i = 0;
         try {
             i = Integer.parseInt(string);
@@ -56,7 +56,7 @@ public class Validator {
         return i;
     }
 
-    static Double returnDoubleValue(String string) {
+    public static Double returnDoubleValue(String string) {
         Double d = 0.0;
         try {
             d = Double.parseDouble(string);
