@@ -10,8 +10,8 @@ public class SortService {
 
         List<E> coll = new ArrayList<>(collection);
 
-        for (int s = collection.size() / 2; s > 0; s /= 2) {
-            for (int i = s; i < collection.size(); i++) {
+        for (int s = coll.size() / 2; s > 0; s /= 2) {
+            for (int i = s; i < coll.size(); i++) {
                 for (int j = i - s; j >= 0 && comparator.compare(coll.get(j), coll.get(j + s)) > 0; j -= s) {
                     Collections.swap(coll, j, j + s);
                 }
@@ -29,8 +29,8 @@ public class SortService {
 
         List<E> coll = new ArrayList<>(collection);
 
-        for (int s = collection.size() / 2; s > 0; s /= 2) {
-            for (int i = s; i < collection.size(); i++) {
+        for (int s = coll.size() / 2; s > 0; s /= 2) {
+            for (int i = s; i < coll.size(); i++) {
                 for (int j = i - s; j >= 0 && coll.get(j).compareTo(coll.get(j + s)) > 0; j -= s) {
                     Collections.swap(coll, j, j + s);
                 }
