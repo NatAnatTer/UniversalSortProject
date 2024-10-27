@@ -13,7 +13,7 @@ public class RootCrop extends UserClass implements Comparable<RootCrop> {
     @Override
     public int compareTo(RootCrop rootCrop) {
 
-        return (int) Double.compare(this.weight, rootCrop.weight);
+        return  Double.compare(this.weight, rootCrop.weight);
     }
 
     @Override

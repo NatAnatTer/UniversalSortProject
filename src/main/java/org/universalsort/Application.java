@@ -9,10 +9,7 @@ import org.universalsort.service.MapperService;
 import org.universalsort.service.ReadWriteService;
 import org.universalsort.service.SortService;
 
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Application {
 
@@ -31,11 +28,14 @@ public class Application {
         this.mapperService = new MapperService();
     }
 
-    public void inputData(){
+    public <E> Collection<E> inputData(){ //TODO передавать тип объекта и способ чтения
         Map<DataType, List<String>> list = readWriteService.read();
         dataType = (DataType) list.keySet().toArray()[0];
         objects = mapperService.map((DataType) list.keySet().toArray()[0], list.get(dataType));
         int a = 1;
+        List<E> returnList  = new ArrayList<>();
+        //TODO mapper
+        return returnList;
     }
 
     public <E extends Comparable> void sortData(Collection<E> collection) {
