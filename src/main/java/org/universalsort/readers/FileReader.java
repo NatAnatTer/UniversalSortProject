@@ -1,7 +1,6 @@
 package org.universalsort.readers;
 
 import org.universalsort.datatypes.DataType;
-import org.universalsort.model.UserClass;
 
 import java.util.List;
 
