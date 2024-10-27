@@ -28,6 +28,7 @@ public class ConsoleReader implements Reader {
             StringBuilder sb = new StringBuilder().append(author).append(" ").append(name).append(" ").append(pageCount);
             list.add(sb.toString());
         }
+        System.out.println(list);
         return list;
     }
 }
