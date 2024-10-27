@@ -10,10 +10,6 @@ import java.util.List;
 
 public class ReadWriteService {
 
-    public ReadWriteService() {
-
-    }
-
     public List<String> read(int reader, DataType dataType){
         if (reader == 1) {
             return new ConsoleReader().readData(dataType);
