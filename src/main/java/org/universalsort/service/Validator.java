@@ -47,13 +47,16 @@ public class Validator {
         return string.split(DELIMITER);
     }
 
-    public static Integer returnIntValue(String string) {
+    public static Integer returnIntValue(String string, int menuCount) {
         int i = 0;
         try {
             i = Integer.parseInt(string);
         } catch (NumberFormatException e) {
         }
-        return i;
+        if (i > 0 && i <= menuCount) {
+            return i;
+        }
+        return 0;
     }
 
     public static Double returnDoubleValue(String string) {
@@ -65,6 +68,12 @@ public class Validator {
         return d;
 
     }
+
+//    public static boolean hasValidCommand(int command) {
+//
+//    }
+
+
 // тестовые данные
     public static void main(String[] args) {
         System.out.println(checkString(null));

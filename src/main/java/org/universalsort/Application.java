@@ -28,8 +28,8 @@ public class Application {
         this.mapperService = new MapperService();
     }
 
-    public <E> Collection<E> inputData(){ //TODO передавать тип объекта и способ чтения
-        Map<DataType, List<String>> list = readWriteService.read();
+    public <E> Collection<E> inputData(int objectType, int readType){ //TODO передавать тип объекта и способ чтения
+        Map<DataType, List<String>> list = readWriteService.read(readType);
         dataType = (DataType) list.keySet().toArray()[0];
         objects = mapperService.map((DataType) list.keySet().toArray()[0], list.get(dataType));
         int a = 1;

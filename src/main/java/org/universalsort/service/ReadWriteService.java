@@ -37,7 +37,7 @@ public class ReadWriteService {
         this.dataTypes.add(new RootCropDataType());
     }
 
-    public Map<DataType,List<String>> read(){
+    public Map<DataType,List<String>> read(int readFrom){
         System.out.println("Выберите генерацию объектов в массиве:");
         System.out.println("1. Чтение из консоли");
         System.out.println("2. Чтение из файла");
