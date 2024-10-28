@@ -1,5 +1,9 @@
 package org.universalsort.service;
 
+import org.universalsort.menu.Menu;
+
+import java.util.Scanner;
+
 public final class Validator {
 
     static final String DELIMITER = ";";
@@ -29,14 +33,6 @@ public final class Validator {
         return string.split(DELIMITER);
     }
 
-    public static Integer returnMenuValue(String string, int menuCount) {
-
-        int i = returnIntValue(string);
-        if (i > 0 && i <= menuCount) {
-            return i;
-        }
-        return 0;
-    }
 
     public static Integer returnIntValue(String string) {
         int i = 0;
@@ -58,5 +54,21 @@ public final class Validator {
 
     }
 
+    public static int checkMenuInput(Menu menu, Scanner scanner, int count) {
+
+        int command = 0;
+        int i = 0;
+        while (command == 0) {
+            menu.showMenuOption();
+            command = returnIntValue(scanner.nextLine());
+            if (command > 0 && command <= count) {
+                i = command;
+            } else {
+                System.out.printf("Неизвестная команда, введите цифру от 1 до %s%n", count);
+                command = 0;
+            }
+        }
+        return i;
+    }
 }
 

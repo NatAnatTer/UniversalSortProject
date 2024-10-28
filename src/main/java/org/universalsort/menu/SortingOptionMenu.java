@@ -31,13 +31,7 @@ public class SortingOptionMenu extends Menu{
     public void selectMenuOption() {
         boolean keepRunning = true;
         while (keepRunning) {
-            showMenuOption();
-            int command = Validator.returnMenuValue(scanner.nextLine(), 3);
-            while (command == 0) {
-                showMenuOption();
-                System.out.println("Неизвестная команда, введите цифру от 1 до 3");
-                command = Validator.returnMenuValue(scanner.nextLine(), 3);
-            }
+        int command = Validator.checkMenuInput(SortingOptionMenu.this, scanner, 3);
 
             switch (command) {
                 case 1:

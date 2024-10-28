@@ -1,15 +1,11 @@
 package org.universalsort.menu;
 
-import org.universalsort.Application;
 import org.universalsort.data.Repository;
 import org.universalsort.service.ReadWriteService;
 import org.universalsort.service.SortService;
 import org.universalsort.service.Validator;
 
-import java.util.Map;
 import java.util.Scanner;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
 
 public class SelectTypeMenu extends Menu {
 
@@ -48,13 +44,7 @@ public class SelectTypeMenu extends Menu {
     public void selectMenuOption() {
         boolean keepRunning = true;
         while (keepRunning) {
-            showMenuOption();
-            int command = Validator.returnMenuValue(scanner.nextLine(), 5);
-            while (command == 0) {
-                System.out.println("Неизвестная команда, введите цифру от 1 до 5");
-                showMenuOption();
-                command = Validator.returnMenuValue(scanner.nextLine(), 5);
-            }
+            int command = Validator.checkMenuInput(SelectTypeMenu.this, scanner, 5);
             switch (command) {
                 case 1:
                     selectInputMethodMenu.selectMenuOption();

@@ -50,13 +50,7 @@ public class SelectInputMethodMenu extends Menu {
     public void selectMenuOption() {
         boolean keepRunning = true;
         while (keepRunning) {
-            showMenuOption();
-            int command = Validator.returnMenuValue(scanner.nextLine(), 4);
-            while (command == 0) {
-                System.out.println("Неизвестная команда, введите цифру от 1 до 4");
-                showMenuOption();
-                command = Validator.returnMenuValue(scanner.nextLine(), 4);
-            }
+            int command = Validator.checkMenuInput(SelectInputMethodMenu.this, scanner, 4);
             switch (command) {
                 case 1:
                   //  clearCollections();
