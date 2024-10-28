@@ -23,6 +23,9 @@ public class RepositoryImpl implements Repository {
         return typesOfData;
     }
 
+    public void saveTypesOfData(TypesOfData typeOfData) {
+        this.typesOfData = typeOfData;
+    }
     @Override
     public void saveBookCollections(Collection<Book> book) {
         this.listOfBooks = book;

@@ -1,5 +1,6 @@
 package org.universalsort.service;
 
+import org.universalsort.data.Repository;
 import org.universalsort.datatypes.BookDataType;
 import org.universalsort.datatypes.CarDataType;
 import org.universalsort.datatypes.RootCropDataType;
@@ -12,11 +13,7 @@ import org.universalsort.readers.FileReader;
 import org.universalsort.readers.MokReader;
 import org.universalsort.readers.Reader;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class ReadWriteService {
 
@@ -27,7 +24,13 @@ public class ReadWriteService {
     private List<RootCrop> rootCrops;
     private Reader reader;
 
-    public ReadWriteService() {
+    ConsoleReader consoleReader = new ConsoleReader();
+    FileReader fileReader = new FileReader();
+   // RandomReader randomReader;
+
+    Repository repository;
+
+    public ReadWriteService( Repository repository) {
         dataTypes = new ArrayList<>();
         books = new ArrayList<>();
         cars = new ArrayList<>();
@@ -35,6 +38,8 @@ public class ReadWriteService {
         this.dataTypes.add(new CarDataType());
         this.dataTypes.add(new BookDataType());
         this.dataTypes.add(new RootCropDataType());
+        this.repository = repository;
+
     }
 
     public Map<DataType,List<String>> read(int readWhat, int readFrom){
@@ -61,5 +66,26 @@ public class ReadWriteService {
         } else {
             return new HashMap<>();
         }
+    }
+
+
+    public void readConsole(){
+        repository.getTypesOfData();
+        //save result to repository
+      //  consoleReader.readData(DataType);
+
+    }
+
+    public void readFromFile(){
+        repository.getTypesOfData();
+       // fileReader.readData(DataType);
+    }
+
+    public void randomReader(){
+       // randomReader.getRandom();
+    }
+
+    public void FileWrite(){
+        //вызвать метод записи
     }
 }

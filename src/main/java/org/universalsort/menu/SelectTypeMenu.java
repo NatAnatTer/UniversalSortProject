@@ -1,6 +1,7 @@
 package org.universalsort.menu;
 
 import org.universalsort.Application;
+import org.universalsort.data.Repository;
 import org.universalsort.service.ReadWriteService;
 import org.universalsort.service.SortService;
 import org.universalsort.service.Validator;
@@ -12,20 +13,32 @@ import java.util.function.Predicate;
 
 public class SelectTypeMenu extends Menu {
 
+    BinarySearchOptionMenu binarySearchOptionMenu;
+    SelectInputMethodMenu selectInputMethodMenu;
+    SortingOptionMenu sortingOptionMenu;
+    Repository repository;
+    ReadWriteService readWriteService;
 
-
-    public SelectTypeMenu(Scanner scanner) {
+    public SelectTypeMenu(Scanner scanner, BinarySearchOptionMenu binarySearchOptionMenu,
+                          SelectInputMethodMenu selectInputMethodMenu, SortingOptionMenu sortingOptionMenu,
+                          Repository repository) {
         super(scanner);
+        this.binarySearchOptionMenu = binarySearchOptionMenu;
+        this.selectInputMethodMenu = selectInputMethodMenu;
+        this.sortingOptionMenu = sortingOptionMenu;
+        this.repository = repository;
+        this.readWriteService = new ReadWriteService(repository);
     }
+
 
     @Override
     public void showMenuOption() {
-        System.out.println("Выберите тип создаваемой коллекции: ");
-        System.out.println("1. Автомобиль");
-        System.out.println("2. Книга");
-        System.out.println("3. Корнеплод");
-        System.out.println("4. Выйти из приложения");
-
+        System.out.println("Выберите действие: ");
+        System.out.println("1. Ввод данных");
+        System.out.println("2. Сортировка");
+        System.out.println("3. Поиск");
+        System.out.println("4. Записать в файл");
+        System.out.println("5. Выйти из приложения");
     }
 
     @Override
@@ -38,31 +51,35 @@ public class SelectTypeMenu extends Menu {
                 showMenuOption();
                 command = Validator.returnMenuValue(scanner.nextLine(), 4);
             }
-//            SelectInputMethodMenu select = new SelectInputMethodMenu(scanner);
+            SelectInputMethodMenu select = new SelectInputMethodMenu(scanner, repository);
 //            if(!menuConfig.containsKey(command)){
 //                System.out.println("Неизвестная команда, введите цифру от 1 до 4");
 //            } else {
 //                menuConfig.get(command).selectMenuOption();
 //            }
-//            switch (command) {
-//                case 1:
-//                    select.setObjectType(1);
-//                    select.selectMenuOption();
-//                    break;
-//                case 2:
+            switch (command) {
+                case 1:
+                    selectInputMethodMenu.selectMenuOption();
+                    break;
+                case 2:
+                    sortingOptionMenu.selectMenuOption();
 //                    select.setObjectType(2);
 //                    select.selectMenuOption();
-//                    break;// создаем диалог с пользователем, в котором спрашиваем 1. Поиск, 2. Сортировка, 3. сохранить коллекцию в файл
-//                case 3:
+                    break;// создаем диалог с пользователем, в котором спрашиваем 1. Поиск, 2. Сортировка, 3. сохранить коллекцию в файл
+                case 3:
+                    binarySearchOptionMenu.selectMenuOption();
 //                    select.setObjectType(3);
 //                    select.selectMenuOption();
-//                    break;
-//                case 4:
-//                    keepRunning = false;
-//                    break;
-//                default:
-//                    System.out.printf("Неизвестная команда", command);
-//            }
+                    break;
+                case 4:
+                    readWriteService.FileWrite();
+                    break;
+                case 5:
+                    keepRunning = false;
+                    break;
+                default:
+                    System.out.printf("Неизвестная команда", command);
+            }
 
 
         }

@@ -27,4 +27,6 @@ public interface Repository {
 
     public TypesOfData getTypesOfData();
 
+    public void saveTypesOfData(TypesOfData typeOfData);
+
 }

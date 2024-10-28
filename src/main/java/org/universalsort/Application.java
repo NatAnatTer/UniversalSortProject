@@ -2,7 +2,7 @@ package org.universalsort;
 
 import org.universalsort.data.RepositoryImpl;
 import org.universalsort.datatypes.DataType;
-import org.universalsort.menu.SelectTypeMenu;
+import org.universalsort.menu.*;
 import org.universalsort.model.Book;
 import org.universalsort.model.Car;
 import org.universalsort.model.RootCrop;
@@ -26,15 +26,13 @@ public class Application {
 
     public Application(){
         Scanner scanner = new Scanner(System.in);
-        this.menu = new SelectTypeMenu(scanner);
-        this.readWriteService = new ReadWriteService();
+        this.menu = new SelectTypeMenu(scanner, new BinarySearchOptionMenu(scanner), new SelectInputMethodMenu(scanner, repository), new SortingOptionMenu(scanner), repository);
+        this.readWriteService = new ReadWriteService(repository);
         this.sortService = new SortService();
         this.mapperService = new MapperService();
     }
 
-    public void start(){
-        menu.selectMenuOption();
-    }
+    public void start(){menu. selectMenuOption();}
 
     public <E> Collection<E> inputData(int objectType, int readType) {
         Map<DataType, List<String>> list = readWriteService.read(objectType, readType);

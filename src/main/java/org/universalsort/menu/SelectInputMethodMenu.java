@@ -1,6 +1,8 @@
 package org.universalsort.menu;
 
 import org.universalsort.Application;
+import org.universalsort.data.Repository;
+import org.universalsort.data.RepositoryImpl;
 import org.universalsort.service.ReadWriteService;
 import org.universalsort.service.SortService;
 import org.universalsort.service.Validator;
@@ -9,9 +11,6 @@ import java.util.Scanner;
 
 public class SelectInputMethodMenu extends Menu {
 
-    public SelectInputMethodMenu(Scanner scanner) {
-        super(scanner);
-    }
 
     private int objectType;
 
@@ -22,6 +21,20 @@ public class SelectInputMethodMenu extends Menu {
     public void setObjectType(int objectType) {
         this.objectType = objectType;
     }
+
+
+    Repository repository;
+    ReadWriteService readWriteService;
+    SelectObjectMenu selectObjectMenu;
+
+
+    public SelectInputMethodMenu(Scanner scanner, Repository repository) {
+        super(scanner);
+        this.repository = repository;
+        this.readWriteService = new ReadWriteService(repository);
+        this.selectObjectMenu = new SelectObjectMenu(scanner, repository);
+    }
+
 
     @Override
     public void showMenuOption() {
@@ -45,21 +58,25 @@ public class SelectInputMethodMenu extends Menu {
                 command = Validator.returnMenuValue(scanner.nextLine(), 4);
             }
             switch (command) {
-                case 1 :
-                    application.inputData(objectType, 1);
+                case 1:
+                    selectObjectMenu.selectMenuOption();
+                    readWriteService.readConsole();
+                    //  application.inputData(objectType, 1);
                     //TODO сортировка, поиск
                     break;
-                case 2 :
-                    application.inputData(objectType, 2);
+                case 2:
+                    selectObjectMenu.selectMenuOption();
+                    readWriteService.readFromFile();
+                    //application.inputData(objectType, 2);
                     break;// создаем диалог с пользователем, в котором спрашиваем 1. Поиск, 2. Сортировка, 3. сохранить коллекцию в файл
-                case 3 :
-
-                    application.inputData(objectType, 3);
+                case 3:
+                    readWriteService.randomReader();
+                    //application.inputData(objectType, 3);
                     break;
-                case 4 :
+                case 4:
                     keepRunning = false;
                     break;
-                default :
+                default:
                     System.out.printf("Неизвестная команда", command);
             }
         }
