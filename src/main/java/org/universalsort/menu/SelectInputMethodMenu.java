@@ -59,17 +59,20 @@ public class SelectInputMethodMenu extends Menu {
             }
             switch (command) {
                 case 1:
+                    clearCollections();
                     selectObjectMenu.selectMenuOption();
                     readWriteService.readConsole();
                     //  application.inputData(objectType, 1);
                     //TODO сортировка, поиск
                     return;
                 case 2:
+                    clearCollections();
                     selectObjectMenu.selectMenuOption();
                     readWriteService.readFromFile();
                     //application.inputData(objectType, 2);
                     return;// создаем диалог с пользователем, в котором спрашиваем 1. Поиск, 2. Сортировка, 3. сохранить коллекцию в файл
                 case 3:
+                    clearCollections();
                     readWriteService.randomReader();
                     //application.inputData(objectType, 3);
                     return;
@@ -80,6 +83,14 @@ public class SelectInputMethodMenu extends Menu {
             }
         }
 
+    }
+
+    public void clearCollections(){
+        repository.clearTypeOfData();
+        repository.clearListOfBooks();
+        repository.clearListOfCars();
+        repository.clearListOfInteger();
+        repository.clearListOfRootCrop();
     }
 
 }

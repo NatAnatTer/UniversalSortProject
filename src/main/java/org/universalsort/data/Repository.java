@@ -32,5 +32,10 @@ public interface Repository {
     public Collection<Integer> getListInteger();
 
     public void saveListInteger(Collection<Integer> list);
+    public void clearTypeOfData();
+    public void clearListOfBooks();
+    public void clearListOfCars();
+    public void clearListOfRootCrop();
+    public void clearListOfInteger();
 
 }

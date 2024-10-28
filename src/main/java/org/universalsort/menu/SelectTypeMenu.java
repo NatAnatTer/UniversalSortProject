@@ -54,15 +54,10 @@ public class SelectTypeMenu extends Menu {
                 showMenuOption();
                 command = Validator.returnMenuValue(scanner.nextLine(), 4);
             }
-          //  SelectInputMethodMenu select = new SelectInputMethodMenu(scanner, repository);
-//            if(!menuConfig.containsKey(command)){
-//                System.out.println("Неизвестная команда, введите цифру от 1 до 4");
-//            } else {
-//                menuConfig.get(command).selectMenuOption();
-//            }
             switch (command) {
                 case 1:
                     selectInputMethodMenu.selectMenuOption();
+
                     break;
                 case 2:
                     sortingOptionMenu.selectMenuOption();

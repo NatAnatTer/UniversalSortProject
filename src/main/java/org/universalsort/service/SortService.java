@@ -3,9 +3,6 @@ package org.universalsort.service;
 
 import org.universalsort.data.Repository;
 import org.universalsort.data.TypesOfData;
-import org.universalsort.model.Book;
-import org.universalsort.model.Car;
-import org.universalsort.model.RootCrop;
 
 import java.util.*;
 
@@ -37,6 +34,7 @@ public class SortService {
                 }
             }
         }
+        System.out.println(arrayList);
         dataType.saveSortedCollection(arrayList, repository);
     }
 
@@ -52,33 +50,41 @@ public class SortService {
                 }
             }
         }
+        System.out.println(arrayList);
         dataType.saveSortedCollection(arrayList, repository);
     }
 
     public <T extends Number & Comparable<T>> void sortEven() {
         TypesOfData dataType = repository.getTypesOfData();
-        Collection<T> collection = dataType.getCollection(repository);
-        List<T> arrayList = new ArrayList<>(collection);
-        int index = 0;
-        for (int s = (arrayList.size() + index) / 2; s > 0; s -= 1) {
-            for (int i = s; i < arrayList.size(); i++) {
-                for (int j = i - s;
-                     j >= 0
-                             && arrayList.get(j).compareTo(arrayList.get(j + s)) > 0
-                             && (Integer) arrayList.get(j) % 2 == 0
-                             && (Integer) arrayList.get(j + s) % 2 == 0;
-                     j -= s) {
-                    Collections.swap(arrayList, j, j + s);
+        if(dataType != TypesOfData.INTEGER){
+            System.out.println("Отсортирую коллекцию только целых чисел"); //TODO experiment of clases
+
+        } else {
+            Collection<T> collection = dataType.getCollection(repository);
+            List<T> arrayList = new ArrayList<>(collection);
+            int index = 0;
+            for (int s = (arrayList.size() + index) / 2; s > 0; s -= 1) {
+                for (int i = s; i < arrayList.size(); i++) {
+                    for (int j = i - s;
+                         j >= 0
+                                 && arrayList.get(j).compareTo(arrayList.get(j + s)) > 0
+                                 && (Integer) arrayList.get(j) % 2 == 0
+                                 && (Integer) arrayList.get(j + s) % 2 == 0;
+                         j -= s) {
+                        Collections.swap(arrayList, j, j + s);
+                    }
+                }
+
+                if (s == 1 && !isSortedEven(arrayList)) {
+
+                    s = collection.size();
+                    if (index < collection.size() * 2) index += 1;
                 }
             }
 
-            if (s == 1 && !isSortedEven(arrayList)) {
-
-                s = collection.size();
-                if (index < collection.size() * 2) index += 1;
-            }
+            System.out.println(arrayList);
+            dataType.saveSortedCollection(arrayList, repository);
         }
-        dataType.saveSortedCollection(arrayList, repository);
     }
 
     public static <T> boolean isSortedEven(Collection<T> collectionSorted) {

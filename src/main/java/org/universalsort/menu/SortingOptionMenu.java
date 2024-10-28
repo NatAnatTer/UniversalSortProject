@@ -1,6 +1,8 @@
 package org.universalsort.menu;
 
 import org.universalsort.data.Repository;
+import org.universalsort.data.TypesOfData;
+import org.universalsort.datatypes.DataType;
 import org.universalsort.service.SortService;
 import org.universalsort.service.Validator;
 
@@ -22,7 +24,7 @@ public class SortingOptionMenu extends Menu{
         System.out.println("Выберите действие: ");
         System.out.println("1. Обычная сортировка");
         System.out.println("2. Сортировка только четных чисел");
-        System.out.println("5. Вернуться назад");
+        System.out.println("3. Вернуться назад");
     }
 
     @Override
@@ -38,33 +40,17 @@ public class SortingOptionMenu extends Menu{
 
             switch (command) {
                 case 1:
-                    ;
+                    sortService.sort();
                     break;
                 case 2:
-                   // sortingOptionMenu.selectMenuOption();
-//                    select.setObjectType(2);
-//                    select.selectMenuOption();
-                    break;// создаем диалог с пользователем, в котором спрашиваем 1. Поиск, 2. Сортировка, 3. сохранить коллекцию в файл
+                   sortService.sortEven();
+                    break;
                 case 3:
-                   // binarySearchOptionMenu.selectMenuOption();
-//                    select.setObjectType(3);
-//                    select.selectMenuOption();
-                    break;
-                case 4:
-                   // readWriteService.FileWrite();
-                    System.out.println("Данные успешно записаны в файл");
-                    break;
-                case 5:
                     keepRunning = false;
-                    break;
+                    return;
                 default:
                     System.out.printf("Неизвестная команда", command);
             }
-
-
         }
-        System.out.println("Спасибо за пользование приложением.");
-        System.out.println("До свидания.");
-
     }
 }

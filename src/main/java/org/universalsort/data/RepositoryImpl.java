@@ -21,6 +21,22 @@ public class RepositoryImpl implements Repository {
 
     TypesOfData typesOfData;
 
+    public void clearTypeOfData(){
+        typesOfData = null;
+    }
+    public void clearListOfBooks(){
+        listOfBooks.clear();
+    }
+    public void clearListOfCars(){
+        listOfCars.clear();
+    }
+    public void clearListOfRootCrop(){
+        listOfRootCrops.clear();
+    }
+    public void clearListOfInteger(){
+        listInteger.clear();
+    }
+
     public Collection<Integer> getListInteger(){
         return this.listInteger;
     }
