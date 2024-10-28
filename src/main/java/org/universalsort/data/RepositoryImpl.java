@@ -19,11 +19,11 @@ public class RepositoryImpl implements Repository {
     Collection<Car> listOfCars = new ArrayList<>();
     Collection<RootCrop> listOfRootCrops = new ArrayList<>();
 
- //   Collection<Integer> listInteger = new ArrayList<>();
+    Collection<Integer> listInteger = new ArrayList<>();
 
-    Collection<Integer> listInteger = List.of(3, 7, 3, 2, 6, 1, 8, 4, 0,5 ,8 ,9, 6);
+  //  Collection<Integer> listInteger = List.of(3, 7, 3, 2, 6, 1, 8, 4, 0,5 ,8 ,9, 6);
     Collection<String> listOfInputString = new ArrayList<>();
-    TypesOfData typesOfData = TypesOfData.INTEGER;
+    TypesOfData typesOfData = TypesOfData.BOOK;
 
     public void clearTypeOfData() {
         typesOfData = null;

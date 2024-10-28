@@ -18,9 +18,8 @@ public class Car extends UserClass implements Comparable<Car> {
 
     @Override
     public String toString() {
-        return "Car;" +
-                ";" + power  +
-                ";" + model +
-                ";" + productionYear;
+        return power  + ";" +
+               model + ";" +
+               productionYear;
     }
 }

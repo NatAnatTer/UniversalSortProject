@@ -27,7 +27,7 @@ public class SelectInputMethodMenu extends Menu {
 
     @Override
     public void showMenuOption() {
-        System.out.println("Выберите действие:");
+        System.out.println("Выберите действие: для выбранного типа " + repository.getTypesOfData());
         System.out.println("1. Ввод данных из консоли");
         System.out.println("2. Ввод данных из файла");
         System.out.println("3. Заполнение полей классов случайными значениями");
@@ -73,7 +73,7 @@ public class SelectInputMethodMenu extends Menu {
     }
 
     public void clearCollections(){
-        repository.clearTypeOfData();
+//        repository.clearTypeOfData();
         repository.clearListOfBooks();
         repository.clearListOfCars();
         repository.clearListOfInteger();

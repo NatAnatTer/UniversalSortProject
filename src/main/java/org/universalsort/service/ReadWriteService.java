@@ -1,18 +1,17 @@
 package org.universalsort.service;
 
 import org.universalsort.data.Repository;
+import org.universalsort.data.TypesOfData;
 import org.universalsort.datatypes.BookDataType;
 import org.universalsort.datatypes.CarDataType;
 import org.universalsort.datatypes.RootCropDataType;
 import org.universalsort.datatypes.DataType;
-import org.universalsort.model.Book;
-import org.universalsort.model.Car;
-import org.universalsort.model.RootCrop;
-import org.universalsort.readers.ConsoleReader;
-import org.universalsort.readers.FileReader;
-import org.universalsort.readers.MokReader;
-import org.universalsort.readers.Reader;
+import org.universalsort.model.*;
+import org.universalsort.readers.*;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
 public class ReadWriteService {
@@ -26,8 +25,9 @@ public class ReadWriteService {
 
     ConsoleReader consoleReader = new ConsoleReader();
     FileReader fileReader = new FileReader();
-    // RandomReader randomReader;
 
+    // RandomReader randomReader;
+    RandomReader randomReader = new RandomReader();
     Repository repository;
 
     public ReadWriteService(Repository repository) {
@@ -83,10 +83,43 @@ public class ReadWriteService {
     }
 
     public void randomReader() {
+        System.out.println("сгенерирована последовательность");
+        ArrayList<Integer> arrayList = randomReader.getRandom(15);
+        System.out.println(Arrays.asList(arrayList));
+        repository.saveListInteger(arrayList);
+        System.out.println(Collections.singletonList(repository.getListInteger()));
         // randomReader.getRandom();
     }
 
-    public void FileWrite() {
+    public void FileWrite(TypesOfData typesOfData) throws IOException {
+        Path path = Path.of( typesOfData + ".dat");
+        System.out.println(path);
+        if (typesOfData.equals(TypesOfData.INTEGER)){
+            StringBuffer stringBuffer = new StringBuffer();
+            for (Integer i : repository.getListInteger()){
+                stringBuffer.append(i+";");
+            }
+            Files.writeString(path, stringBuffer);
+        }else {
+            StringBuffer stringBuffer = new StringBuffer();
+            repository.getRepositoryByType(typesOfData).forEach((element) -> {
+                stringBuffer.append(element.toString());
+            });
+            Files.writeString(path, stringBuffer);
+        }
+
+//        for (UserClassInterface e : repository.getRepositoryByType(typesOfData)) {
+//            stringBuffer.append(e.toString());
+//        }
+//        repository.getRepositoryByType(typesOfData);
+//        for (Object o : col) {
+//            o.toString();
+//        }
+//        Files.writeString(path, .toString());
+
+
+
+//
         //вызвать метод записи
     }
 }

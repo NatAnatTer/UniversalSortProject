@@ -6,6 +6,7 @@ import org.universalsort.service.ReadWriteService;
 import org.universalsort.service.SortService;
 import org.universalsort.service.Validator;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.function.Consumer;
@@ -36,7 +37,7 @@ public class SelectTypeMenu extends Menu {
 
     @Override
     public void showMenuOption() {
-        System.out.println("Выберите действие: ");
+        System.out.println("Выберите действие: для выбранного типа " + repository.getTypesOfData());
         System.out.println("1. Ввод данных");
         System.out.println("2. Сортировка");
         System.out.println("3. Поиск");
@@ -66,8 +67,12 @@ public class SelectTypeMenu extends Menu {
                     binarySearchOptionMenu.selectMenuOption();
                     break;
                 case 4:
-                    readWriteService.FileWrite();
-                    System.out.println("Данные успешно записаны в файл");
+                    try {
+                        readWriteService.FileWrite(repository.getTypesOfData());
+                        System.out.println("Данные успешно записаны в файл");
+                    }catch (IOException e){
+                        System.out.println("Ошибка записи");
+                    }
                     break;
                 case 5:
                     keepRunning = false;

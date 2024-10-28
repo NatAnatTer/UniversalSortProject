@@ -45,7 +45,7 @@ public class BinarySearchOptionMenu extends Menu {
         System.out.println("Введите поисковой запрос");
         String value = scanner.nextLine();
         if (typeOfClass != TypesOfData.INTEGER) {
-            if (!typeOfClass.getFields().get(field).test(value)) {
+            if (typeOfClass.getFields().get(field).test(value)) {
                 System.out.println("Введено недопустимое значение");
                 return;
             }
