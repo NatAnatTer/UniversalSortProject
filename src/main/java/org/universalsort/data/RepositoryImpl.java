@@ -12,18 +12,18 @@ import java.util.List;
 public class RepositoryImpl implements Repository {
     //Collection<Book> listOfBooks = new ArrayList<>();
     Collection<Book> listOfBooks = List.of( //TODO mock
-            Book.builder().name("One").author("Misha").pagesCount(10).build(),
-            Book.builder().name("Three").author("Petya").pagesCount(30).build(),
-            Book.builder().name("Two").author("Vasya").pagesCount(5).build(),
-            Book.builder().name("Ten").author("Vasilisa").pagesCount(50).build());
+            Book.builder().name("W").author("Vasilisa").pagesCount(10).build(),
+            Book.builder().name("O").author("Petya").pagesCount(30).build(),
+            Book.builder().name("A").author("Vasya").pagesCount(5).build(),
+            Book.builder().name("C").author("Misha").pagesCount(50).build());
     Collection<Car> listOfCars = new ArrayList<>();
     Collection<RootCrop> listOfRootCrops = new ArrayList<>();
 
-    Collection<Integer> listInteger = new ArrayList<>();
+ //   Collection<Integer> listInteger = new ArrayList<>();
 
-  //  Collection<Integer> listInteger = List.of(3, 7, 3, 2, 6, 1, 8, 4, 0,5 ,8 ,9, 6);
+    Collection<Integer> listInteger = List.of(3, 7, 3, 2, 6, 1, 8, 4, 0,5 ,8 ,9, 6);
     Collection<String> listOfInputString = new ArrayList<>();
-    TypesOfData typesOfData = TypesOfData.BOOK;
+    TypesOfData typesOfData = TypesOfData.INTEGER;
 
     public void clearTypeOfData() {
         typesOfData = null;

@@ -17,11 +17,8 @@ public class SearchService {
     }
 
 
-    public  <T extends Comparable<T>> T binarySearch(String field, T value) {
+    public  <T, E extends Comparable<T>> T binarySearch(String field, E value) {
         TypesOfData type = repository.getTypesOfData();
-      //  if(type == TypesOfData.INTEGER){
-          //  binarySearchWithoutComparator(Integer.parseInt((String) value));
-       // } else {
             List<T> sortList = new ArrayList<>(repository.getRepositoryByType(type));
             T element = getElement(field, value);
             Comparator<T> comparator = type.getComparator(field);
@@ -33,6 +30,7 @@ public class SearchService {
                 T obj = sortList.get(mid);
                 int result = comparator.compare(obj, element);
                 if (result == 0) {
+                    System.out.println("Искомое значение найдено");
                     return obj;
                 } else if (result > 0) {
                     right = mid - 1;
@@ -40,7 +38,7 @@ public class SearchService {
                     left = mid + 1;
                 }
             }
-       // }
+        System.out.println("Искомое значение не найдено");
         return null;
     }
 
@@ -48,14 +46,12 @@ public class SearchService {
         TypesOfData type = repository.getTypesOfData();
         List<Integer> sortList = new ArrayList<>(repository.getRepositoryByType(type));
         Integer element = value;
-        System.out.println(value + "=" +element);
         int left = 0;
 
         int right = sortList.size() - 1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
             Integer obj = sortList.get(mid);
-            System.out.println("MID = " + obj);
             int result = obj.compareTo(element);
             if (result == 0) {
                 System.out.println("Искомое значение найдено");
@@ -73,17 +69,30 @@ public class SearchService {
     public <T, E> T getElement(String field, E value) {
         TypesOfData typeOfData = repository.getTypesOfData();
         T object = null;
+        String str = "";
+        Double d = 0.0;
+        Integer i = 0;
+        if (str.getClass().equals(value.getClass())) {
+            str = (String) value;
+        } else if (d.getClass().equals(value.getClass())) {
+            d = (Double) value;
+        } else if (i.getClass().equals(value.getClass())) {
+            i = (Integer) value;
+        } else {
+            i = 0;
+        }
+
 
         switch (typeOfData) {
             case CAR -> {
                 String model;
                 double power;
                 int productionYear;
-                if (field.equalsIgnoreCase("model")) model = (String) value;
+                if (field.equalsIgnoreCase("model")) model = str;
                 else model = null;
-                if (field.equalsIgnoreCase("power")) power = (double) value;
+                if (field.equalsIgnoreCase("power")) power = d;
                 else power = 0.0;
-                if (field.equalsIgnoreCase("power")) productionYear = (int) value;
+                if (field.equalsIgnoreCase("power")) productionYear = i;
                 else productionYear = 0;
                 object = (T) Car.builder()
                         .model(model)
@@ -94,11 +103,11 @@ public class SearchService {
                 String author;
                 String name;
                 int pagesCount;
-                if (field.equalsIgnoreCase("author")) author = (String) value;
+                if (field.equalsIgnoreCase("author")) author = str;
                 else author = null;
-                if (field.equalsIgnoreCase("name")) name = (String) value;
+                if (field.equalsIgnoreCase("name")) name = str;
                 else name = null;
-                if (field.equalsIgnoreCase("pagesCount")) pagesCount = (int) value;
+                if (field.equalsIgnoreCase("pagesCount")) pagesCount = i;
                 else pagesCount = 0;
                 object = (T) Book.builder()
                         .author(author)
@@ -110,11 +119,11 @@ public class SearchService {
                 double weight;
                 String color;
                 ;
-                if (field.equalsIgnoreCase("type")) type = (String) value;
+                if (field.equalsIgnoreCase("type")) type = str;
                 else type = null;
-                if (field.equalsIgnoreCase("weight")) weight = (double) value;
+                if (field.equalsIgnoreCase("weight")) weight = d;
                 else weight = 0.0;
-                if (field.equalsIgnoreCase("color")) color = (String) value;
+                if (field.equalsIgnoreCase("color")) color = str;
                 else color = null;
                 object = (T) RootCrop.builder()
                         .type(type)

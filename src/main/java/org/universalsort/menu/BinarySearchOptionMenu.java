@@ -45,7 +45,8 @@ public class BinarySearchOptionMenu extends Menu {
         System.out.println("Введите поисковой запрос");
         String value = scanner.nextLine();
         if (typeOfClass != TypesOfData.INTEGER) {
-            if (typeOfClass.getFields().get(field).test(value)) {
+            if (!typeOfClass.getFields().get(field).test(value)) {
+                System.out.println(typeOfClass.getFields().get(field).test(value));
                 System.out.println("Введено недопустимое значение");
                 return;
             }
@@ -59,9 +60,10 @@ public class BinarySearchOptionMenu extends Menu {
             sortService.sort();
             searchService.binarySearchWithoutComparator(Integer.parseInt(value));
         }else {
-            sortService.sort(field);
-            searchService.binarySearch(field, value);
-            Object result = searchService.binarySearch(field, typeOfClass);
+           sortService.sort(field);
+            System.out.println(repository.getBookCollection());
+            //searchService.binarySearch(field, value);
+            Object result = searchService.binarySearch(field, value);
             System.out.println(result);
         }
 

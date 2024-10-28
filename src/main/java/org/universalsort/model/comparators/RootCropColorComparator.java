@@ -8,6 +8,6 @@ import java.util.Comparator;
 public class RootCropColorComparator implements Comparator<RootCrop> {
     @Override
     public int compare(RootCrop o1, RootCrop o2) {
-        return o1.getColor().compareTo(o2.getColor());
+        return o1.getColor().toLowerCase().compareTo(o2.getColor().toLowerCase());
     }
 }
