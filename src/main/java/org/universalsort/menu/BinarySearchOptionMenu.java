@@ -1,5 +1,6 @@
 package org.universalsort.menu;
 
+import org.universalsort.data.Repository;
 import org.universalsort.data.RepositoryImpl;
 import org.universalsort.data.TypesOfData;
 import org.universalsort.model.Book;
@@ -7,6 +8,7 @@ import org.universalsort.model.Car;
 import org.universalsort.model.RootCrop;
 import org.universalsort.model.comparators.*;
 import org.universalsort.service.SearchService;
+import org.universalsort.service.SortService;
 
 import java.util.Comparator;
 import java.util.Map;
@@ -14,13 +16,17 @@ import java.util.Scanner;
 
 public class BinarySearchOptionMenu extends Menu{
 
-    RepositoryImpl repository = new RepositoryImpl();
-    SearchService service;
+    Repository repository;
+    SearchService searchService;
+    SortService sortService;
 
 
 
-    public BinarySearchOptionMenu(Scanner scanner) {
+    public BinarySearchOptionMenu(Scanner scanner, Repository repository, SearchService searchService, SortService sortService) {
         super(scanner);
+        this.repository = repository;
+        this.searchService = searchService;
+        this.sortService = sortService;
     }
 
 
@@ -33,7 +39,7 @@ public class BinarySearchOptionMenu extends Menu{
     public void selectMenuOption() {
 
         TypesOfData typeOfClass = repository.getTypesOfData();
-        System.out.println("Введите поле из списка");
+        System.out.println("Введите поле из списка:");
         System.out.println(typeOfClass.getFields().keySet());
         String field = scanner.nextLine();
         if(!typeOfClass.getFields().keySet().contains(field)) {
@@ -46,7 +52,8 @@ public class BinarySearchOptionMenu extends Menu{
             System.out.println("Введено недопустимое значение");
             return;
         }
-        Object result = service.binarySearch(null, field, value, typeOfClass);
+
+        Object result = searchService.binarySearch(null, field, value, typeOfClass);
     }
 
 

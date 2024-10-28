@@ -1,5 +1,6 @@
 package org.universalsort.mapers;
 
+import org.universalsort.data.Repository;
 import org.universalsort.model.Book;
 import org.universalsort.service.Validator;
 
@@ -7,9 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookMapper implements Mapper {
+
+    Repository repository;
+    public BookMapper(Repository repository) {
+        this.repository = repository;
+    }
+
     @Override
-    public List<Book> map(List<String> list) {
+    public void map() {
         List<Book> books = new ArrayList<>();
+       List<String > list = (List<String>) repository.getInputCollection();
         for (String s : list) {
             String[] fields = Validator.convertString(s);
             Book book = Book.builder()
@@ -19,6 +27,7 @@ public class BookMapper implements Mapper {
                     .build();
             books.add(book);
         }
-        return books;
+        repository.saveBookCollections(books);
+       // return books;
     }
 }

@@ -73,6 +73,7 @@ public class ReadWriteService {
         repository.getTypesOfData();
         //save result to repository
         //  consoleReader.readData(DataType);
+        // mapper
 
     }
 

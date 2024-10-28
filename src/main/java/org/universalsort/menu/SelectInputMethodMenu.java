@@ -28,7 +28,7 @@ public class SelectInputMethodMenu extends Menu {
     SelectObjectMenu selectObjectMenu;
 
 
-    public SelectInputMethodMenu(Scanner scanner, Repository repository) {
+    public SelectInputMethodMenu(Scanner scanner, Repository repository) { //TODO
         super(scanner);
         this.repository = repository;
         this.readWriteService = new ReadWriteService(repository);
@@ -59,8 +59,9 @@ public class SelectInputMethodMenu extends Menu {
             }
             switch (command) {
                 case 1:
-                    clearCollections();
+                  //  clearCollections();
                     selectObjectMenu.selectMenuOption();
+                    System.out.println(repository.getTypesOfData());
                     readWriteService.readConsole();
                     //  application.inputData(objectType, 1);
                     //TODO сортировка, поиск

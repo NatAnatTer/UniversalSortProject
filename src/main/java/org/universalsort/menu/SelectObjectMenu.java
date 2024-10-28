@@ -44,6 +44,7 @@ public class SelectObjectMenu extends Menu {
             switch (command) {
                 case 1:
                     repository.saveTypesOfData(TypesOfData.CAR);
+                    System.out.println(repository.getTypesOfData());
                     keepRunning = false;
                     break;
                 case 2:

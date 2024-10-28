@@ -17,9 +17,9 @@ public class RepositoryImpl implements Repository {
     Collection<Integer> listInteger = new ArrayList<>();
     Collection<String> listOfInputString = new ArrayList<>();
 
-    DataType dataType = null;
+  //  DataType dataType = null;
 
-    TypesOfData typesOfData;
+    TypesOfData typesOfData = TypesOfData.CAR;
 
     public void clearTypeOfData(){
         typesOfData = null;
