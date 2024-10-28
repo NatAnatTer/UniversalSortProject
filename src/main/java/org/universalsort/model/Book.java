@@ -23,4 +23,9 @@ public class Book extends UserClass implements Comparable<Book> {
                 pagesCount + ";";
     }
 
+
+    @Override
+    public String getClassName() {
+        return "Book";
+    }
 }

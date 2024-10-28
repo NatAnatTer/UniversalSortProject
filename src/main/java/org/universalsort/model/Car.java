@@ -23,4 +23,9 @@ public class Car extends UserClass implements Comparable<Car> {
                 model + ";" +
                 productionYear + ";";
     }
+
+    @Override
+    public String getClassName() {
+        return "Car";
+    }
 }

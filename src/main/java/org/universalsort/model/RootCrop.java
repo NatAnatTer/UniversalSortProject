@@ -24,4 +24,8 @@ public class RootCrop extends UserClass implements Comparable<RootCrop> {
                 color + ";";
     }
 
+    @Override
+    public String getClassName() {
+        return "RootCrop";
+    }
 }
