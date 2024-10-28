@@ -18,10 +18,9 @@ public class RootCrop extends UserClass implements Comparable<RootCrop> {
 
     @Override
     public String toString() {
-        return "RootCrop;" +
-                type + ";" +
-                weight + ";" +
-                color + ";";
+        return type + ";" +
+               weight + ";" +
+               color;
     }
 
 }
