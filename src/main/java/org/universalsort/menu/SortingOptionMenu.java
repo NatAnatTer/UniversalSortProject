@@ -22,7 +22,7 @@ public class SortingOptionMenu extends Menu{
     @Override
     public void showMenuOption() {
         System.out.println("Выберите действие: ");
-        System.out.println("1. Обычная сортировка");
+        System.out.println("1. Обычная сортировка"); //TODO добавить проверку что есть тип данных и коллекция чтобы не падала программа TypesOfData.getCollection(org.universalsort.data.Repository)" because "dataType" is null
         System.out.println("2. Сортировка только четных чисел");
         System.out.println("3. Вернуться назад");
     }
@@ -40,13 +40,23 @@ public class SortingOptionMenu extends Menu{
 
             switch (command) {
                 case 1:
-                    sortService.sort();
+                    if(repository.getTypesOfData() != null) {
+                        sortService.sort();
+                    } else {
+                        System.out.println("Необходимо сначала ввести данные");
+                        return;
+                    }
                     break;
                 case 2:
-                   sortService.sortEven();
+                    if(repository.getTypesOfData() != null) {
+                        sortService.sortEven();
+                    } else {
+                        System.out.println("Необходимо сначала ввести данные");
+                        return;
+                    }
+
                     break;
                 case 3:
-                    keepRunning = false;
                     return;
                 default:
                     System.out.printf("Неизвестная команда", command);
