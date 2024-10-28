@@ -49,10 +49,11 @@ public class SelectTypeMenu extends Menu {
         boolean keepRunning = true;
         while (keepRunning) {
             showMenuOption();
-            int command = Validator.returnMenuValue(scanner.nextLine(), 4);//TODO перенести логику в отдельный метод
+            int command = Validator.returnMenuValue(scanner.nextLine(), 5);
             while (command == 0) {
+                System.out.println("Неизвестная команда, введите цифру от 1 до 5");
                 showMenuOption();
-                command = Validator.returnMenuValue(scanner.nextLine(), 4);
+                command = Validator.returnMenuValue(scanner.nextLine(), 5);
             }
             switch (command) {
                 case 1:

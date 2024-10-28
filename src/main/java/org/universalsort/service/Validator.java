@@ -1,10 +1,7 @@
 package org.universalsort.service;
 
-public class Validator {
+public final class Validator {
 
-    static final String TEST_CAR = "Car;300.5;Porsche;2021";
-    static final String TEST_BOOK = "Book;Robert Martin;Clean Code;1993";
-    static final String TEST_ROOTCROP = "Rootcrop;Potato;153.4;brown";
     static final String DELIMITER = ";";
     static final String INCORRECT_DATA = "Некорректный формат входных данных";
     static final String DELIMITER_NOT_CONTAINS = "Строка не содержит ни одного разделителя";
@@ -33,11 +30,8 @@ public class Validator {
     }
 
     public static Integer returnMenuValue(String string, int menuCount) {
-        int i = 0;
-        try {
-            i = Integer.parseInt(string);
-        } catch (NumberFormatException e) {
-        }
+
+        int i = returnIntValue(string);
         if (i > 0 && i <= menuCount) {
             return i;
         }
@@ -50,7 +44,7 @@ public class Validator {
             i = Integer.parseInt(string);
         } catch (NumberFormatException e) {
         }
-        return 0;
+        return i;
     }
 
 
@@ -63,9 +57,6 @@ public class Validator {
         return d;
 
     }
-
-
-//    public static boolean hasValidCommand(int command) { //TODO
 
 }
 

@@ -32,10 +32,11 @@ public class SortingOptionMenu extends Menu{
         boolean keepRunning = true;
         while (keepRunning) {
             showMenuOption();
-            int command = Validator.returnMenuValue(scanner.nextLine(), 4);//TODO перенести логику в отдельный метод
+            int command = Validator.returnMenuValue(scanner.nextLine(), 3);
             while (command == 0) {
                 showMenuOption();
-                command = Validator.returnMenuValue(scanner.nextLine(), 4);
+                System.out.println("Неизвестная команда, введите цифру от 1 до 3");
+                command = Validator.returnMenuValue(scanner.nextLine(), 3);
             }
 
             switch (command) {
