@@ -1,13 +1,33 @@
 package org.universalsort.service;
 
 
+import org.universalsort.data.Repository;
+import org.universalsort.data.TypesOfData;
+import org.universalsort.model.Book;
+import org.universalsort.model.Car;
+import org.universalsort.model.RootCrop;
+
 import java.util.*;
 
 
 public class SortService {
 
-    public <E extends Comparable> Collection<E> sort(Collection<E> collection, Comparator<E> comparator) {
+    Repository repository;
 
+
+    public SortService(Repository repository) {
+        this.repository = repository;
+    }
+
+    public <T> Comparator<T> getComparator(String field) {
+        TypesOfData thisTypeOfData = repository.getTypesOfData();
+        return thisTypeOfData.getComparator(field);
+    }
+
+    public <E extends Comparable> void sort(String field) {
+        Comparator<E> comparator = getComparator(field);
+        TypesOfData dataType = repository.getTypesOfData();
+        Collection<E> collection = dataType.getCollection(repository);
         List<E> arrayList = new ArrayList<>(collection);
 
         for (int s = arrayList.size() / 2; s > 0; s /= 2) {
@@ -17,24 +37,27 @@ public class SortService {
                 }
             }
         }
-        return arrayList;
+        dataType.saveSortedCollection(arrayList, repository);
     }
 
-    public <E extends Comparable> Collection<E> sort(Collection<E> collection) {
+    public <E extends Comparable> void sort() {
+        TypesOfData dataType = repository.getTypesOfData();
+        Collection<E> collection = dataType.getCollection(repository);
+        List<E> arrayList = new ArrayList<>(collection);
 
-        List<E> ArrayList = new ArrayList<>(collection);
-
-        for (int s = ArrayList.size() / 2; s > 0; s /= 2) {
-            for (int i = s; i < ArrayList.size(); i++) {
-                for (int j = i - s; j >= 0 && ArrayList.get(j).compareTo(ArrayList.get(j + s)) > 0; j -= s) {
-                    Collections.swap(ArrayList, j, j + s);
+        for (int s = arrayList.size() / 2; s > 0; s /= 2) {
+            for (int i = s; i < arrayList.size(); i++) {
+                for (int j = i - s; j >= 0 && arrayList.get(j).compareTo(arrayList.get(j + s)) > 0; j -= s) {
+                    Collections.swap(arrayList, j, j + s);
                 }
             }
         }
-        return ArrayList;
+        dataType.saveSortedCollection(arrayList, repository);
     }
 
-    public static <T extends Number & Comparable<T>> Collection<T> sortEven(Collection<T> collection) {
+    public <T extends Number & Comparable<T>> void sortEven() {
+        TypesOfData dataType = repository.getTypesOfData();
+        Collection<T> collection = dataType.getCollection(repository);
         List<T> arrayList = new ArrayList<>(collection);
         int index = 0;
         for (int s = (arrayList.size() + index) / 2; s > 0; s -= 1) {
@@ -52,20 +75,21 @@ public class SortService {
             if (s == 1 && !isSortedEven(arrayList)) {
 
                 s = collection.size();
-                if(index < collection.size()*2)  index += 1;
+                if (index < collection.size() * 2) index += 1;
             }
         }
-        return arrayList;
+        dataType.saveSortedCollection(arrayList, repository);
     }
-    public static <T> boolean isSortedEven(Collection<T> collectionSorted){
+
+    public static <T> boolean isSortedEven(Collection<T> collectionSorted) {
         ArrayList<T> arrEven = new ArrayList<>(collectionSorted);
-        int minSize =  Integer.MIN_VALUE;
+        int minSize = Integer.MIN_VALUE;
 
-        for(int i = 0; i < arrEven.size() -1;  i++){
-            int element = (int)arrEven.get(i);
+        for (int i = 0; i < arrEven.size() - 1; i++) {
+            int element = (int) arrEven.get(i);
 
-            if(element % 2 == 0){
-                if (element >= minSize){
+            if (element % 2 == 0) {
+                if (element >= minSize) {
                     minSize = element;
                 } else {
                     return false;

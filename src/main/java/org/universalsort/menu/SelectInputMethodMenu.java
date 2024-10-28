@@ -63,19 +63,18 @@ public class SelectInputMethodMenu extends Menu {
                     readWriteService.readConsole();
                     //  application.inputData(objectType, 1);
                     //TODO сортировка, поиск
-                    break;
+                    return;
                 case 2:
                     selectObjectMenu.selectMenuOption();
                     readWriteService.readFromFile();
                     //application.inputData(objectType, 2);
-                    break;// создаем диалог с пользователем, в котором спрашиваем 1. Поиск, 2. Сортировка, 3. сохранить коллекцию в файл
+                    return;// создаем диалог с пользователем, в котором спрашиваем 1. Поиск, 2. Сортировка, 3. сохранить коллекцию в файл
                 case 3:
                     readWriteService.randomReader();
                     //application.inputData(objectType, 3);
-                    break;
+                    return;
                 case 4:
-                    keepRunning = false;
-                    break;
+                    return;
                 default:
                     System.out.printf("Неизвестная команда", command);
             }

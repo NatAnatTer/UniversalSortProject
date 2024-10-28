@@ -13,11 +13,20 @@ public class RepositoryImpl implements Repository {
     Collection<Book> listOfBooks = new ArrayList<>();
     Collection<Car> listOfCars = new ArrayList<>();
     Collection<RootCrop> listOfRootCrops = new ArrayList<>();
+
+    Collection<Integer> listInteger = new ArrayList<>();
     Collection<String> listOfInputString = new ArrayList<>();
 
     DataType dataType = null;
 
     TypesOfData typesOfData;
+
+    public Collection<Integer> getListInteger(){
+        return this.listInteger;
+    }
+    public void saveListInteger(Collection<Integer> list){
+        this.listInteger = list;
+    }
 
     public TypesOfData getTypesOfData() {
         return typesOfData;

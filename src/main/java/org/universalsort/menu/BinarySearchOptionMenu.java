@@ -17,15 +17,7 @@ public class BinarySearchOptionMenu extends Menu{
     RepositoryImpl repository = new RepositoryImpl();
     SearchService service;
 
-    Map<String, Comparator<Book>> bookFieldComparator = Map.of("author", new BookAuthorComparator(),
-            "name", new BookNameComparator(),
-            "pagesCount", new BookPagesCountComparator());
-    Map<String, Comparator<Car>> carFieldComparator = Map.of("model", new CarModelComparator(),
-            "power", new CarPowerComparator(),
-            "productionYear", new CarProductionYearComparator());
-    Map<String, Comparator<RootCrop>> rootCropFieldComparator = Map.of("color", new RootCropColorComparator(),
-            "type", new RootCropTypeComparator(),
-            "weight", new RootCropWeightComparator());
+
 
     public BinarySearchOptionMenu(Scanner scanner) {
         super(scanner);

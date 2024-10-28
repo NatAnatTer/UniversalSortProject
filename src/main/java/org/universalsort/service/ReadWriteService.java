@@ -26,11 +26,11 @@ public class ReadWriteService {
 
     ConsoleReader consoleReader = new ConsoleReader();
     FileReader fileReader = new FileReader();
-   // RandomReader randomReader;
+    // RandomReader randomReader;
 
     Repository repository;
 
-    public ReadWriteService( Repository repository) {
+    public ReadWriteService(Repository repository) {
         dataTypes = new ArrayList<>();
         books = new ArrayList<>();
         cars = new ArrayList<>();
@@ -42,26 +42,26 @@ public class ReadWriteService {
 
     }
 
-    public Map<DataType,List<String>> read(int readWhat, int readFrom){
+    public Map<DataType, List<String>> read(int readWhat, int readFrom) {
 
         int dataType = readWhat;
         if (readFrom == 1) {
             DataType dt = dataTypes.get(dataType - 1);
             List<String> lst = new ConsoleReader().readData(dataTypes.get(dataType - 1));
             HashMap<DataType, List<String>> map = new HashMap<>();
-            map.put(dt,lst);
+            map.put(dt, lst);
             return map;
         } else if (readFrom == 2) {
             DataType dt = dataTypes.get(dataType - 1);
             List<String> lst = new FileReader().readData(dataTypes.get(dataType - 1));
             HashMap<DataType, List<String>> map = new HashMap<>();
-            map.put(dt,lst);
+            map.put(dt, lst);
             return map;
         } else if (readFrom == 3) {
             DataType dt = dataTypes.get(dataType - 1);
             List<String> lst = new MokReader().readData(dataTypes.get(dataType - 1));
             HashMap<DataType, List<String>> map = new HashMap<>();
-            map.put(dt,lst);
+            map.put(dt, lst);
             return map;
         } else {
             return new HashMap<>();
@@ -69,23 +69,23 @@ public class ReadWriteService {
     }
 
 
-    public void readConsole(){
+    public void readConsole() {
         repository.getTypesOfData();
         //save result to repository
-      //  consoleReader.readData(DataType);
+        //  consoleReader.readData(DataType);
 
     }
 
-    public void readFromFile(){
+    public void readFromFile() {
         repository.getTypesOfData();
-       // fileReader.readData(DataType);
+        // fileReader.readData(DataType);
     }
 
-    public void randomReader(){
-       // randomReader.getRandom();
+    public void randomReader() {
+        // randomReader.getRandom();
     }
 
-    public void FileWrite(){
+    public void FileWrite() {
         //вызвать метод записи
     }
 }

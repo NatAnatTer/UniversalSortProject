@@ -1,7 +1,6 @@
 package org.universalsort.menu;
 
 import org.universalsort.data.Repository;
-import org.universalsort.data.RepositoryImpl;
 import org.universalsort.data.TypesOfData;
 import org.universalsort.service.Validator;
 
@@ -11,14 +10,13 @@ public class SelectObjectMenu extends Menu {
     private TypesOfData typesOfData;
 
     Repository repository;
-    SelectInputMethodMenu selectInputMethodMenu;
+
 
     public SelectObjectMenu(Scanner scanner, Repository repository) {
         super(scanner);
         this.repository = repository;
+
     }
-
-
 
 
     @Override
@@ -32,6 +30,7 @@ public class SelectObjectMenu extends Menu {
 
     @Override
     public void selectMenuOption() {
+
         boolean keepRunning = true;
         while (keepRunning) {
             showMenuOption();
@@ -43,11 +42,20 @@ public class SelectObjectMenu extends Menu {
             }
 
             switch (command) {
-                case 1: typesOfData = TypesOfData.CAR;
-                case 2: typesOfData = TypesOfData.BOOK;
-                case 3: typesOfData = TypesOfData.ROOT_CROP;
+                case 1:
+                    repository.saveTypesOfData(TypesOfData.CAR);
+                    keepRunning = false;
+                    break;
+                case 2:
+                    repository.saveTypesOfData(TypesOfData.BOOK);
+                    keepRunning = false;
+                    break;
+                case 3:
+                    repository.saveTypesOfData(TypesOfData.ROOT_CROP);
+                    keepRunning = false;
+                    break;
                 case 4:
-                    selectInputMethodMenu.selectMenuOption();
+                    return;
                 default:
                     System.out.printf("Неизвестная команда", command);
             }

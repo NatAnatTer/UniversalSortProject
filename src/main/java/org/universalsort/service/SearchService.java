@@ -19,7 +19,7 @@ public class SearchService {
 //TODO сделать метод, который сравнит каждый тип и выдает результат или передавать в данный метод созданный объект с заполненным поелм при вводе
     public  <T extends Comparable<T>> T binarySearch(T element, String field, String value, TypesOfData type) {
         List<T> sortList = new ArrayList<>(repository.getRepositoryByType(type));
-        Comparator<T> comparator = getComparator(field, repository.getTypesOfData());
+        Comparator<T> comparator = type.getComparator(field);
         int left = 0;
 
         int right = sortList.size() - 1;
@@ -38,23 +38,5 @@ public class SearchService {
         return null;
     }
 
-    public <E> Comparator<E> getComparator(String field, TypesOfData typesOfData){
 
-        Map<String, Comparator<Book>> bookFieldComparator = Map.of("author", new BookAuthorComparator(),
-                "name", new BookNameComparator(),
-                "pagesCount", new BookPagesCountComparator());
-        Map<String, Comparator<Car>> carFieldComparator = Map.of("model", new CarModelComparator(),
-                "power", new CarPowerComparator(),
-                "productionYear", new CarProductionYearComparator());
-        Map<String, Comparator<RootCrop>> rootCropFieldComparator = Map.of("color", new RootCropColorComparator(),
-                "type", new RootCropTypeComparator(),
-                "weight", new RootCropWeightComparator());
-
-      return switch (typesOfData){
-            case CAR -> (Comparator<E>) carFieldComparator.get(field);
-            case BOOK -> (Comparator<E>) bookFieldComparator.get(field);
-            case ROOT_CROP ->  (Comparator<E>) rootCropFieldComparator.get(field);
-        };
-
-    }
 }

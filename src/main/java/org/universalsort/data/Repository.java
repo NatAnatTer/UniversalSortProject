@@ -29,4 +29,8 @@ public interface Repository {
 
     public void saveTypesOfData(TypesOfData typeOfData);
 
+    public Collection<Integer> getListInteger();
+
+    public void saveListInteger(Collection<Integer> list);
+
 }

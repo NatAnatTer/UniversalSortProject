@@ -18,16 +18,19 @@ public class SelectTypeMenu extends Menu {
     SortingOptionMenu sortingOptionMenu;
     Repository repository;
     ReadWriteService readWriteService;
+    SortService sortService;
+
 
     public SelectTypeMenu(Scanner scanner, BinarySearchOptionMenu binarySearchOptionMenu,
                           SelectInputMethodMenu selectInputMethodMenu, SortingOptionMenu sortingOptionMenu,
-                          Repository repository) {
+                          Repository repository, SortService sortService, ReadWriteService readWriteService) {
         super(scanner);
         this.binarySearchOptionMenu = binarySearchOptionMenu;
         this.selectInputMethodMenu = selectInputMethodMenu;
         this.sortingOptionMenu = sortingOptionMenu;
         this.repository = repository;
-        this.readWriteService = new ReadWriteService(repository);
+        this.readWriteService = readWriteService;
+        this.sortService = sortService;
     }
 
 
@@ -51,7 +54,7 @@ public class SelectTypeMenu extends Menu {
                 showMenuOption();
                 command = Validator.returnMenuValue(scanner.nextLine(), 4);
             }
-            SelectInputMethodMenu select = new SelectInputMethodMenu(scanner, repository);
+          //  SelectInputMethodMenu select = new SelectInputMethodMenu(scanner, repository);
 //            if(!menuConfig.containsKey(command)){
 //                System.out.println("Неизвестная команда, введите цифру от 1 до 4");
 //            } else {
@@ -73,6 +76,7 @@ public class SelectTypeMenu extends Menu {
                     break;
                 case 4:
                     readWriteService.FileWrite();
+                    System.out.println("Данные успешно записаны в файл");
                     break;
                 case 5:
                     keepRunning = false;

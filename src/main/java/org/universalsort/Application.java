@@ -26,10 +26,13 @@ public class Application {
 
     public Application(){
         Scanner scanner = new Scanner(System.in);
-        this.menu = new SelectTypeMenu(scanner, new BinarySearchOptionMenu(scanner), new SelectInputMethodMenu(scanner, repository), new SortingOptionMenu(scanner), repository);
         this.readWriteService = new ReadWriteService(repository);
-        this.sortService = new SortService();
+        this.sortService = new SortService(repository);
         this.mapperService = new MapperService();
+        this.menu = new SelectTypeMenu(scanner, new BinarySearchOptionMenu(scanner),
+                new SelectInputMethodMenu(scanner, repository), new SortingOptionMenu(scanner, repository, sortService),
+                repository, sortService, readWriteService);
+
     }
 
     public void start(){menu. selectMenuOption();}
@@ -46,11 +49,11 @@ public class Application {
         return returnList;
     }
 
-    public <E extends Comparable> void sortData(Collection<E> collection) {
-        sortService.sort(collection);
-    }
-
-    public <E extends Comparable> void sortData(Collection<E> collection, Comparator<E> comparator) {
-        sortService.sort(collection, comparator);
-    }
+//    public <E extends Comparable> void sortData(Collection<E> collection) {
+//        sortService.sort(collection);
+//    }
+//
+//    public <E extends Comparable> void sortData(Collection<E> collection, Comparator<E> comparator) {
+//        sortService.sort(collection);
+//    }
 }
