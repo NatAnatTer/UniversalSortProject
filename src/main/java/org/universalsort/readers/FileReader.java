@@ -21,6 +21,7 @@ public class FileReader implements Reader{
             System.out.println("Файл найден");
             //читаем из файла
             classFields = Files.readString(path);
+
             Pattern pattern = Pattern.compile(dataType.getCurrentClass() + ";");
             Matcher matcher = pattern.matcher(classFields);
             List<String> list = new ArrayList<String>();

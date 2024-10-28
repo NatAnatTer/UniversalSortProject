@@ -12,6 +12,7 @@ import org.universalsort.readers.FileReader;
 import org.universalsort.readers.MokReader;
 import org.universalsort.readers.Reader;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -56,19 +57,23 @@ public class ReadWriteService {
             map.put(dt,lst);
             return map;
         } else if (numCmd == 2) {
-            DataType dt = dataTypes.get(dataType - 1);
-            List<String> lst = new FileReader().readData(dataTypes.get(dataType - 1));
-            HashMap<DataType, List<String>> map = new HashMap<>();
-            map.put(dt,lst);
-            return map;
+            try {
+                DataType dt = dataTypes.get(dataType - 1);
+                List<String> lst = new FileReader().readData(dataTypes.get(dataType - 1));
+                HashMap<DataType, List<String>> map = new HashMap<>();
+                map.put(dt,lst);
+                return map;
+            }catch (IOException e){
+                System.out.println("Ошибка ввода");
+            }
+
         } else if (numCmd == 3) {
             DataType dt = dataTypes.get(dataType - 1);
             List<String> lst = new MokReader().readData(dataTypes.get(dataType - 1));
             HashMap<DataType, List<String>> map = new HashMap<>();
             map.put(dt,lst);
             return map;
-        } else {
-            return new HashMap<>();
         }
+            return new HashMap<>();
     }
 }
