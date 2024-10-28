@@ -14,40 +14,25 @@ public class Validator {
             System.out.println("Пустая строка, нечего парсить");
             return null;
         } else {
-            int delimeterCount = string.length() - string.replace(DELIMITER, "").length();
-            if (delimeterCount > 3) { //проверяем количество разделителей в строке
+            int delimiterCount = string.length() - string.replace(DELIMITER, "").length();
+            if (delimiterCount != 2) { //проверяем количество разделителей в строке
                 System.out.println(INCORRECT_DATA);
                 return null;
             } else if (!string.contains(DELIMITER)) { //проверяем наличие разделителя в строке
                 System.out.println(DELIMITER_NOT_CONTAINS);
                 return null;
             } else {
-
-                try {
-                    String str = string.substring(0, string.indexOf(DELIMITER));
-                    if (str.equalsIgnoreCase("car") //проверяем наличие ключа в начале строки
-                            || str.equalsIgnoreCase("book")
-                            || str.equalsIgnoreCase("rootcrop")) {
-                        return string.substring(string.indexOf(DELIMITER) + 1);
-
-                    } else {
-                        System.out.println(INCORRECT_DATA);
-                        return null;
-                    }
-                } catch (Exception e) {
-                    System.out.println(INCORRECT_DATA);
-                    return null;
-                }
+                return string;
             }
-
         }
     }
+
 
     public static String[] convertString(String string) {
         return string.split(DELIMITER);
     }
 
-    public static Integer returnIntValue(String string, int menuCount) {
+    public static Integer returnMenuValue(String string, int menuCount) {
         int i = 0;
         try {
             i = Integer.parseInt(string);
@@ -59,6 +44,16 @@ public class Validator {
         return 0;
     }
 
+    public static Integer returnIntValue(String string) {
+        int i = 0;
+        try {
+            i = Integer.parseInt(string);
+        } catch (NumberFormatException e) {
+        }
+        return 0;
+    }
+
+
     public static Double returnDoubleValue(String string) {
         Double d = 0.0;
         try {
@@ -69,23 +64,8 @@ public class Validator {
 
     }
 
-//    public static boolean hasValidCommand(int command) {
-//
-//    }
 
+//    public static boolean hasValidCommand(int command) { //TODO
 
-// тестовые данные
-    public static void main(String[] args) {
-        System.out.println(checkString(null));
-        System.out.println(checkString(TEST_CAR));
-        System.out.println(checkString(TEST_BOOK));
-        System.out.println(checkString(TEST_ROOTCROP));
-        System.out.println(checkString("10000000000000000"));
-        System.out.println(checkString("1000;0000;00000;0000"));
-        System.out.println(checkString(";;;"));
-        System.out.println(checkString(""));
-        System.out.println(checkString("BoOk;12;www;zx;new"));
-        System.out.println(checkString("BOOk;12;www;zx"));
-    }
 }
 
