@@ -8,10 +8,7 @@ import org.universalsort.datatypes.DataType;
 import org.universalsort.model.Book;
 import org.universalsort.model.Car;
 import org.universalsort.model.RootCrop;
-import org.universalsort.readers.ConsoleReader;
-import org.universalsort.readers.FileReader;
-import org.universalsort.readers.MokReader;
-import org.universalsort.readers.Reader;
+import org.universalsort.readers.*;
 
 import java.util.*;
 
@@ -26,8 +23,9 @@ public class ReadWriteService {
 
     ConsoleReader consoleReader = new ConsoleReader();
     FileReader fileReader = new FileReader();
-    // RandomReader randomReader;
 
+    // RandomReader randomReader;
+    RandomReader randomReader = new RandomReader();
     Repository repository;
 
     public ReadWriteService(Repository repository) {
@@ -83,6 +81,7 @@ public class ReadWriteService {
     }
 
     public void randomReader() {
+        repository.saveListInteger(randomReader.getRandom(15));
         // randomReader.getRandom();
     }
 
