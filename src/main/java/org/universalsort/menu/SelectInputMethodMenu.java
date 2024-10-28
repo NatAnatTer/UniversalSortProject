@@ -44,7 +44,6 @@ public class SelectInputMethodMenu extends Menu {
                 showMenuOption();
                 command = Validator.returnMenuValue(scanner.nextLine(), 4);
             }
-            Application application = new Application(new ReadWriteService(), new SortService());
             switch (command) {
                 case 1 :
                     application.inputData(objectType, 1);

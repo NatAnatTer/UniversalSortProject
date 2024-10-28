@@ -1,11 +1,10 @@
-package org.universalsort.Data;
+package org.universalsort.data;
 
 import org.universalsort.datatypes.DataType;
 import org.universalsort.model.Book;
 import org.universalsort.model.Car;
 import org.universalsort.model.RootCrop;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 public interface Repository {
@@ -23,5 +22,7 @@ public interface Repository {
 
     public void saveInputCollections(Collection<String> input);
     public Collection<String> getInputCollection();
+
+    public <T> Collection<T> getRepositoryByType(TypesOfData type);
 
 }

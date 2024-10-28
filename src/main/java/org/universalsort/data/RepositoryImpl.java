@@ -1,4 +1,4 @@
-package org.universalsort.Data;
+package org.universalsort.data;
 
 import org.universalsort.datatypes.DataType;
 import org.universalsort.model.Book;
@@ -7,9 +7,10 @@ import org.universalsort.model.RootCrop;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class RepositoryImpl implements Repository {
-    Collection<Book> listOfBooks = new ArrayList<>();
+    List<Book> listOfBooks = new ArrayList<>();
     Collection<Car> listOfCars = new ArrayList<>();
     Collection<RootCrop> listOfRootCrops = new ArrayList<>();
     Collection<String> listOfInputString = new ArrayList<>();
@@ -24,7 +25,7 @@ public class RepositoryImpl implements Repository {
 
     @Override
     public void saveBookCollections(Collection<Book> book) {
-        this.listOfBooks = book;
+        this.listOfBooks = (List<Book>) book;
     }
 
     @Override
@@ -62,5 +63,15 @@ public class RepositoryImpl implements Repository {
     @Override
     public Collection<String> getInputCollection() {
         return listOfInputString;
+    }
+
+    @Override
+    public <T> Collection<T> getRepositoryByType(TypesOfData type) {
+        switch (type.indexOfType){
+            case 1: return (Collection<T>) listOfCars;
+            case 2: return (Collection<T>) listOfBooks;
+            case 3: return (Collection<T>) listOfRootCrops;
+        }
+        return null;
     }
 }

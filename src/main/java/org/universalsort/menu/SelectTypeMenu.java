@@ -5,7 +5,10 @@ import org.universalsort.service.ReadWriteService;
 import org.universalsort.service.SortService;
 import org.universalsort.service.Validator;
 
+import java.util.Map;
 import java.util.Scanner;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class SelectTypeMenu extends Menu {
 
@@ -32,31 +35,34 @@ public class SelectTypeMenu extends Menu {
             showMenuOption();
             int command = Validator.returnMenuValue(scanner.nextLine(), 4);//TODO перенести логику в отдельный метод
             while (command == 0) {
-                System.out.println("Неизвестная команда, введите цифру от 1 до 4");
                 showMenuOption();
                 command = Validator.returnMenuValue(scanner.nextLine(), 4);
             }
-            Application application = new Application(new ReadWriteService(), new SortService());
-            SelectInputMethodMenu select = new SelectInputMethodMenu(scanner);
-            switch (command) {
-                case 1:
-                    select.setObjectType(1);
-                    select.selectMenuOption();
-                    break;
-                case 2:
-                    select.setObjectType(2);
-                    select.selectMenuOption();
-                    break;// создаем диалог с пользователем, в котором спрашиваем 1. Поиск, 2. Сортировка, 3. сохранить коллекцию в файл
-                case 3:
-                    select.setObjectType(3);
-                    select.selectMenuOption();
-                    break;
-                case 4:
-                    keepRunning = false;
-                    break;
-                default:
-                    System.out.printf("Неизвестная команда", command);
-            }
+//            SelectInputMethodMenu select = new SelectInputMethodMenu(scanner);
+//            if(!menuConfig.containsKey(command)){
+//                System.out.println("Неизвестная команда, введите цифру от 1 до 4");
+//            } else {
+//                menuConfig.get(command).selectMenuOption();
+//            }
+//            switch (command) {
+//                case 1:
+//                    select.setObjectType(1);
+//                    select.selectMenuOption();
+//                    break;
+//                case 2:
+//                    select.setObjectType(2);
+//                    select.selectMenuOption();
+//                    break;// создаем диалог с пользователем, в котором спрашиваем 1. Поиск, 2. Сортировка, 3. сохранить коллекцию в файл
+//                case 3:
+//                    select.setObjectType(3);
+//                    select.selectMenuOption();
+//                    break;
+//                case 4:
+//                    keepRunning = false;
+//                    break;
+//                default:
+//                    System.out.printf("Неизвестная команда", command);
+//            }
 
 
         }

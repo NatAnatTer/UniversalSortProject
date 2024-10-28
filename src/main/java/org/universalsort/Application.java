@@ -1,6 +1,8 @@
 package org.universalsort;
 
+import org.universalsort.data.RepositoryImpl;
 import org.universalsort.datatypes.DataType;
+import org.universalsort.menu.SelectTypeMenu;
 import org.universalsort.model.Book;
 import org.universalsort.model.Car;
 import org.universalsort.model.RootCrop;
@@ -13,19 +15,25 @@ import java.util.*;
 
 public class Application {
 
+    private SelectTypeMenu menu;
     private final ReadWriteService readWriteService;
     private final SortService sortService;
     private final MapperService mapperService;
     private List<? extends UserClass> objects;
     private DataType dataType;
-    private List<Book> books;
-    private List<Car> cars;
-    private List<RootCrop> rootCrops;
 
-    public Application(ReadWriteService readWriteService, SortService sortService){
-        this.readWriteService = readWriteService;
-        this.sortService = sortService;
+    private RepositoryImpl repository = new RepositoryImpl();
+
+    public Application(){
+        Scanner scanner = new Scanner(System.in);
+        this.menu = new SelectTypeMenu(scanner);
+        this.readWriteService = new ReadWriteService();
+        this.sortService = new SortService();
         this.mapperService = new MapperService();
+    }
+
+    public void start(){
+        menu.selectMenuOption();
     }
 
     public <E> Collection<E> inputData(int objectType, int readType) {

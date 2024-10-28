@@ -12,11 +12,6 @@ public class Main {
 
 
     public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in);
-        SelectTypeMenu selectTypeMenu = new SelectTypeMenu(scanner);
-        selectTypeMenu.selectMenuOption();
-        scanner.close();
-
+        new Application().start();
     }
 }

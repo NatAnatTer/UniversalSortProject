@@ -1,9 +1,22 @@
 package org.universalsort.service;
 
+import org.universalsort.data.Repository;
+import org.universalsort.data.TypesOfData;
+
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class SearchService {
-    public static <T extends Comparable<T>> T binarySearch(List<T> sortList, T element) {
+    private final Repository repository;
+
+    public SearchService(Repository repository) {
+        this.repository = repository;
+    }
+
+
+    public  <T extends Comparable<T>> T binarySearch(T element, String field, String value, TypesOfData type) {
+        List<T> sortList = new ArrayList<>(repository.getRepositoryByType(type));
         int left = 0;
         int right = sortList.size() - 1;
         while (left <= right) {
