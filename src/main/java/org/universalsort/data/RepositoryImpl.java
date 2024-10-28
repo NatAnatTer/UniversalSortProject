@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class RepositoryImpl implements Repository {
-    List<Book> listOfBooks = new ArrayList<>();
+    Collection<Book> listOfBooks = new ArrayList<>();
     Collection<Car> listOfCars = new ArrayList<>();
     Collection<RootCrop> listOfRootCrops = new ArrayList<>();
     Collection<String> listOfInputString = new ArrayList<>();
@@ -25,7 +25,7 @@ public class RepositoryImpl implements Repository {
 
     @Override
     public void saveBookCollections(Collection<Book> book) {
-        this.listOfBooks = (List<Book>) book;
+        this.listOfBooks = book;
     }
 
     @Override

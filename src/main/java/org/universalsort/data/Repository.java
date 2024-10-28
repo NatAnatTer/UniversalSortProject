@@ -25,4 +25,6 @@ public interface Repository {
 
     public <T> Collection<T> getRepositoryByType(TypesOfData type);
 
+    public TypesOfData getTypesOfData();
+
 }
