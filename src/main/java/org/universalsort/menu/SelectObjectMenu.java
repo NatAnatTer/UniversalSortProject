@@ -60,7 +60,7 @@ public class SelectObjectMenu extends Menu {
                 default:
                     System.out.printf("Неизвестная команда", command);
             }
-            repository.saveTypesOfData(typesOfData); // данное меню записывает в репозиторий какой был выбарн тип объекта
+            //repository.saveTypesOfData(typesOfData); // данное меню записывает в репозиторий какой был выбарн тип объекта
         }
     }
 }
