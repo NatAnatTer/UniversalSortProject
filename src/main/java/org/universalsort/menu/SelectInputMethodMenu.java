@@ -3,6 +3,7 @@ package org.universalsort.menu;
 import org.universalsort.Application;
 import org.universalsort.data.Repository;
 import org.universalsort.data.RepositoryImpl;
+import org.universalsort.data.TypesOfData;
 import org.universalsort.service.ReadWriteService;
 import org.universalsort.service.SortService;
 import org.universalsort.service.Validator;
@@ -11,28 +12,16 @@ import java.util.Scanner;
 
 public class SelectInputMethodMenu extends Menu {
 
-
-    private int objectType;
-
-    public int getObjectType() {
-        return objectType;
-    }
-
-    public void setObjectType(int objectType) {
-        this.objectType = objectType;
-    }
-
-
     Repository repository;
     ReadWriteService readWriteService;
     SelectObjectMenu selectObjectMenu;
 
 
-    public SelectInputMethodMenu(Scanner scanner, Repository repository) { //TODO
+    public SelectInputMethodMenu(Scanner scanner, Repository repository, ReadWriteService readWriteService, SelectObjectMenu selectObjectMenu) {
         super(scanner);
         this.repository = repository;
-        this.readWriteService = new ReadWriteService(repository);
-        this.selectObjectMenu = new SelectObjectMenu(scanner, repository);
+        this.readWriteService = readWriteService;
+        this.selectObjectMenu = selectObjectMenu;
     }
 
 
@@ -57,25 +46,23 @@ public class SelectInputMethodMenu extends Menu {
                 showMenuOption();
                 command = Validator.returnMenuValue(scanner.nextLine(), 4);
             }
+            System.out.println(repository.getTypesOfData());
             switch (command) {
                 case 1:
-                  //  clearCollections();
+                    clearCollections();
                     selectObjectMenu.selectMenuOption();
                     System.out.println(repository.getTypesOfData());
                     readWriteService.readConsole();
-                    //  application.inputData(objectType, 1);
-                    //TODO сортировка, поиск
+
                     return;
                 case 2:
                     clearCollections();
                     selectObjectMenu.selectMenuOption();
                     readWriteService.readFromFile();
-                    //application.inputData(objectType, 2);
-                    return;// создаем диалог с пользователем, в котором спрашиваем 1. Поиск, 2. Сортировка, 3. сохранить коллекцию в файл
+                    return;
                 case 3:
                     clearCollections();
                     readWriteService.randomReader();
-                    //application.inputData(objectType, 3);
                     return;
                 case 4:
                     return;

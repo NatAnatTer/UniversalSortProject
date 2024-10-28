@@ -19,7 +19,7 @@ public class RepositoryImpl implements Repository {
 
   //  DataType dataType = null;
 
-    TypesOfData typesOfData = TypesOfData.CAR;
+    TypesOfData typesOfData;
 
     public void clearTypeOfData(){
         typesOfData = null;

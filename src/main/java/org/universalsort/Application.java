@@ -3,9 +3,6 @@ package org.universalsort;
 import org.universalsort.data.RepositoryImpl;
 import org.universalsort.datatypes.DataType;
 import org.universalsort.menu.*;
-import org.universalsort.model.Book;
-import org.universalsort.model.Car;
-import org.universalsort.model.RootCrop;
 import org.universalsort.model.UserClass;
 import org.universalsort.service.MapperService;
 import org.universalsort.service.ReadWriteService;
@@ -33,7 +30,7 @@ public class Application {
         this.mapperService = new MapperService(repository);
         this.searchService = new SearchService(repository);
         this.menu = new SelectTypeMenu(scanner, new BinarySearchOptionMenu(scanner, repository, searchService, sortService),
-                new SelectInputMethodMenu(scanner, repository), new SortingOptionMenu(scanner, repository, sortService),
+                new SelectInputMethodMenu(scanner, repository, readWriteService, new SelectObjectMenu(scanner, repository)), new SortingOptionMenu(scanner, repository, sortService),
                 repository, sortService, readWriteService);
 
     }
