@@ -61,13 +61,9 @@ public class SelectTypeMenu extends Menu {
                     break;
                 case 2:
                     sortingOptionMenu.selectMenuOption();
-//                    select.setObjectType(2);
-//                    select.selectMenuOption();
-                    break;// создаем диалог с пользователем, в котором спрашиваем 1. Поиск, 2. Сортировка, 3. сохранить коллекцию в файл
+                    break;
                 case 3:
                     binarySearchOptionMenu.selectMenuOption();
-//                    select.setObjectType(3);
-//                    select.selectMenuOption();
                     break;
                 case 4:
                     readWriteService.FileWrite();

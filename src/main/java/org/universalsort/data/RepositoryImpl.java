@@ -10,37 +10,46 @@ import java.util.Collection;
 import java.util.List;
 
 public class RepositoryImpl implements Repository {
-    Collection<Book> listOfBooks = new ArrayList<>();
+    //Collection<Book> listOfBooks = new ArrayList<>();
+    Collection<Book> listOfBooks = List.of( //TODO mock
+            Book.builder().name("One").author("Misha").pagesCount(10).build(),
+            Book.builder().name("Three").author("Petya").pagesCount(30).build(),
+            Book.builder().name("Two").author("Vasya").pagesCount(5).build(),
+            Book.builder().name("Ten").author("Vasilisa").pagesCount(50).build());
     Collection<Car> listOfCars = new ArrayList<>();
     Collection<RootCrop> listOfRootCrops = new ArrayList<>();
 
-    Collection<Integer> listInteger = new ArrayList<>();
+ //   Collection<Integer> listInteger = new ArrayList<>();
+
+    Collection<Integer> listInteger = List.of(3, 7, 3, 2, 6, 1, 8, 4, 0,5 ,8 ,9, 6);
     Collection<String> listOfInputString = new ArrayList<>();
+    TypesOfData typesOfData = TypesOfData.INTEGER;
 
-  //  DataType dataType = null;
-
-    TypesOfData typesOfData;
-
-    public void clearTypeOfData(){
+    public void clearTypeOfData() {
         typesOfData = null;
     }
-    public void clearListOfBooks(){
+
+    public void clearListOfBooks() {
         listOfBooks.clear();
     }
-    public void clearListOfCars(){
+
+    public void clearListOfCars() {
         listOfCars.clear();
     }
-    public void clearListOfRootCrop(){
+
+    public void clearListOfRootCrop() {
         listOfRootCrops.clear();
     }
-    public void clearListOfInteger(){
+
+    public void clearListOfInteger() {
         listInteger.clear();
     }
 
-    public Collection<Integer> getListInteger(){
+    public Collection<Integer> getListInteger() {
         return this.listInteger;
     }
-    public void saveListInteger(Collection<Integer> list){
+
+    public void saveListInteger(Collection<Integer> list) {
         this.listInteger = list;
     }
 
@@ -51,6 +60,7 @@ public class RepositoryImpl implements Repository {
     public void saveTypesOfData(TypesOfData typeOfData) {
         this.typesOfData = typeOfData;
     }
+
     @Override
     public void saveBookCollections(Collection<Book> book) {
         this.listOfBooks = book;
@@ -66,7 +76,6 @@ public class RepositoryImpl implements Repository {
         this.listOfCars = car;
     }
 
-
     @Override
     public Collection<Car> getCarCollection() {
         return listOfCars;
@@ -76,7 +85,6 @@ public class RepositoryImpl implements Repository {
     public void saveRootCropCollections(Collection<RootCrop> rootCrop) {
         this.listOfRootCrops = rootCrop;
     }
-
 
     @Override
     public Collection<RootCrop> getRootCropCollection() {
@@ -95,10 +103,15 @@ public class RepositoryImpl implements Repository {
 
     @Override
     public <T> Collection<T> getRepositoryByType(TypesOfData type) {
-        switch (type.indexOfType){
-            case 1: return (Collection<T>) listOfCars;
-            case 2: return (Collection<T>) listOfBooks;
-            case 3: return (Collection<T>) listOfRootCrops;
+        switch (type.indexOfType) {
+            case 1:
+                return (Collection<T>) listOfCars;
+            case 2:
+                return (Collection<T>) listOfBooks;
+            case 3:
+                return (Collection<T>) listOfRootCrops;
+            case 4:
+                return (Collection<T>) listInteger;
         }
         return null;
     }

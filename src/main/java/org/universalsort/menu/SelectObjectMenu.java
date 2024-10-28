@@ -7,8 +7,6 @@ import org.universalsort.service.Validator;
 import java.util.Scanner;
 
 public class SelectObjectMenu extends Menu {
-    private TypesOfData typesOfData;
-
     Repository repository;
 
 
@@ -17,7 +15,6 @@ public class SelectObjectMenu extends Menu {
         this.repository = repository;
 
     }
-
 
     @Override
     public void showMenuOption() {
@@ -59,7 +56,6 @@ public class SelectObjectMenu extends Menu {
                 default:
                     System.out.printf("Неизвестная команда", command);
             }
-
         }
     }
 }

@@ -26,7 +26,7 @@ public class SortService {
         TypesOfData dataType = repository.getTypesOfData();
         Collection<E> collection = dataType.getCollection(repository);
         List<E> arrayList = new ArrayList<>(collection);
-
+        System.out.println(arrayList);
         for (int s = arrayList.size() / 2; s > 0; s /= 2) {
             for (int i = s; i < arrayList.size(); i++) {
                 for (int j = i - s; j >= 0 && comparator.compare(arrayList.get(j), arrayList.get(j + s)) > 0; j -= s) {
@@ -42,7 +42,7 @@ public class SortService {
         TypesOfData dataType = repository.getTypesOfData();
         Collection<E> collection = dataType.getCollection(repository);
         List<E> arrayList = new ArrayList<>(collection);
-
+        System.out.println(arrayList);
         for (int s = arrayList.size() / 2; s > 0; s /= 2) {
             for (int i = s; i < arrayList.size(); i++) {
                 for (int j = i - s; j >= 0 && arrayList.get(j).compareTo(arrayList.get(j + s)) > 0; j -= s) {
@@ -62,6 +62,7 @@ public class SortService {
         } else {
             Collection<T> collection = dataType.getCollection(repository);
             List<T> arrayList = new ArrayList<>(collection);
+            System.out.println(arrayList);
             int index = 0;
             for (int s = (arrayList.size() + index) / 2; s > 0; s -= 1) {
                 for (int i = s; i < arrayList.size(); i++) {

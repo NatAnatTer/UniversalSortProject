@@ -51,7 +51,6 @@ public class SelectInputMethodMenu extends Menu {
                 case 1:
                     clearCollections();
                     selectObjectMenu.selectMenuOption();
-                    System.out.println(repository.getTypesOfData());
                     readWriteService.readConsole();
 
                     return;
