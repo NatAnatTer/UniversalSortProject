@@ -100,6 +100,12 @@ public class ReadWriteService {
                 stringBuffer.append(i+";");
             }
             Files.writeString(path, stringBuffer);
+        }else {
+            StringBuffer stringBuffer = new StringBuffer();
+            repository.getRepositoryByType(typesOfData).forEach((element) -> {
+                stringBuffer.append(element.toString());
+            });
+            Files.writeString(path, stringBuffer);
         }
 
 //        for (UserClassInterface e : repository.getRepositoryByType(typesOfData)) {
