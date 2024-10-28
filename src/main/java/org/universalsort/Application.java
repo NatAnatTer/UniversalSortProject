@@ -1,6 +1,7 @@
 package org.universalsort;
 
 import org.universalsort.data.RepositoryImpl;
+import org.universalsort.data.TypesOfData;
 import org.universalsort.datatypes.DataType;
 import org.universalsort.menu.*;
 import org.universalsort.model.Book;
@@ -11,6 +12,7 @@ import org.universalsort.service.MapperService;
 import org.universalsort.service.ReadWriteService;
 import org.universalsort.service.SearchService;
 import org.universalsort.service.SortService;
+import org.w3c.dom.ls.LSOutput;
 
 import java.util.*;
 
@@ -38,7 +40,36 @@ public class Application {
 
     }
 
-    public void start(){menu. selectMenuOption();}
+    public void start(){
+        System.out.println("Выберите тип данных");
+        System.out.println("1 - Машина(Car)");
+        System.out.println("2 - Книга (Book)");
+        System.out.println("3 - Корнеплод (RootCrop)");
+        System.out.println("4 - Integer");
+        System.out.println("5 - выход");
+            switch (new Scanner(System.in).nextInt()) {
+                case 1 -> {
+                    repository.saveTypesOfData(TypesOfData.CAR);
+                    System.out.println("Выбран тип машина");
+                }
+                case 2 -> {
+                    repository.saveTypesOfData(TypesOfData.BOOK);
+                    System.out.println("Выбран тип книга");
+                }
+                case 3 -> {
+                    repository.saveTypesOfData(TypesOfData.ROOT_CROP);
+                    System.out.println("Выбран тип корнеплод");
+                }
+                case 4 -> {
+                    repository.saveTypesOfData(TypesOfData.INTEGER);
+                    System.out.println("Выбран тип числовая последовательность");
+                }
+                case 5 -> {
+                    return;
+                }
+            }
+        menu.selectMenuOption();
+    }
 
 //    public <E> Collection<E> inputData(int objectType, int readType) {
 //        Map<DataType, List<String>> list = readWriteService.read(objectType, readType);

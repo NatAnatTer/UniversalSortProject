@@ -1,6 +1,7 @@
 package org.universalsort.readers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ public class RandomReader {
         }
         return integers;
     }
-    public List<Integer> getRandom(int length)throws NegativeArraySizeException{
+    public ArrayList<Integer> getRandom(int length)throws NegativeArraySizeException{
         return new ArrayList<>(List.of(getMasIntRnd(length)));
     }
 
