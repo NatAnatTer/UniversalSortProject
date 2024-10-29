@@ -23,6 +23,8 @@ public class SearchService {
             T element = getElement(field, value);
             Comparator<T> comparator = type.getComparator(field);
            // List<T> result = new ArrayList<>();//new
+
+        //
             int left = 0;
 
             int right = sortList.size() - 1;
