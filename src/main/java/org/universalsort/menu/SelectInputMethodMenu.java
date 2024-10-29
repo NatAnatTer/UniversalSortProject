@@ -56,7 +56,7 @@ public class SelectInputMethodMenu extends Menu {
                     return;
                 case 2:
                     clearCollections();
-                    selectObjectMenu.selectMenuOption();
+//                    selectObjectMenu.selectMenuOption();
                     readWriteService.readFromFile();
                     return;
                 case 3:
