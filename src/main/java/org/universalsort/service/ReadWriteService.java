@@ -52,20 +52,26 @@ public class ReadWriteService {
             map.put(dt, lst);
             return map;
         } else if (readFrom == 2) {
-            DataType dt = dataTypes.get(dataType - 1);
-            List<String> lst = new FileReader().readData(dataTypes.get(dataType - 1));
-            HashMap<DataType, List<String>> map = new HashMap<>();
-            map.put(dt, lst);
-            return map;
+            try{
+                DataType dt = dataTypes.get(dataType - 1);
+                List<String> lst = new FileReader().readData(dataTypes.get(dataType - 1));
+                HashMap<DataType, List<String>> map = new HashMap<>();
+                map.put(dt, lst);
+                return map;
+            }catch (IOException e){
+                e.printStackTrace();
+                System.out.println("Ошибка чтения");
+            }
+
         } else if (readFrom == 3) {
             DataType dt = dataTypes.get(dataType - 1);
             List<String> lst = new MokReader().readData(dataTypes.get(dataType - 1));
             HashMap<DataType, List<String>> map = new HashMap<>();
             map.put(dt, lst);
             return map;
-        } else {
-            return new HashMap<>();
         }
+            return new HashMap<>();
+
     }
 
 
@@ -78,23 +84,18 @@ public class ReadWriteService {
     }
 
     public void readFromFile() {
-        repository.getTypesOfData();
-        // fileReader.readData(DataType);
+//        fileReader.readData(repository);
     }
 
     public void randomReader() {
-        System.out.println("сгенерирована последовательность");
-        ArrayList<Integer> arrayList = randomReader.getRandom(15);
-        System.out.println(Arrays.asList(arrayList));
-        repository.saveListInteger(arrayList);
-        System.out.println(Collections.singletonList(repository.getListInteger()));
-        // randomReader.getRandom();
+            randomReader.getRandom(repository);
     }
 
-    public void FileWrite(TypesOfData typesOfData) throws IOException {
-        Path path = Path.of( typesOfData + ".dat");
+    public void FileWrite() {
+        try {
+        Path path = Path.of( repository.getTypesOfData() + ".dat");
         System.out.println(path);
-        if (typesOfData.equals(TypesOfData.INTEGER)){
+        if (repository.getTypesOfData().equals(TypesOfData.INTEGER)){
             StringBuffer stringBuffer = new StringBuffer();
             for (Integer i : repository.getListInteger()){
                 stringBuffer.append(i+";");
@@ -102,24 +103,15 @@ public class ReadWriteService {
             Files.writeString(path, stringBuffer);
         }else {
             StringBuffer stringBuffer = new StringBuffer();
-            repository.getRepositoryByType(typesOfData).forEach((element) -> {
+            repository.getRepositoryByType(repository.getTypesOfData()).forEach((element) -> {
                 stringBuffer.append(element.toString());
             });
             Files.writeString(path, stringBuffer);
         }
-
-//        for (UserClassInterface e : repository.getRepositoryByType(typesOfData)) {
-//            stringBuffer.append(e.toString());
-//        }
-//        repository.getRepositoryByType(typesOfData);
-//        for (Object o : col) {
-//            o.toString();
-//        }
-//        Files.writeString(path, .toString());
-
-
-
-//
+            System.out.println("Данные успешно записаны в файл");
+        }catch (IOException e){
+            System.out.println("Ошибка записи");
+        }
         //вызвать метод записи
     }
 }
