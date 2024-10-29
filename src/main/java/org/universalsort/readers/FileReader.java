@@ -98,19 +98,19 @@ public class FileReader implements Reader {
                     repository.saveListInteger(integerArrayList);
                     System.out.println("разбор и запись произведены");
                 } else {
-//                    String[] lines = classFields.toString().split("\n");
-//                    for(String line: lines){
-//                        String[] elements = line.split(",");
-//                        System.out.println(Arrays.toString(elements));
-//                    }
-                    StringBuilder stringBuilder = new StringBuilder();
-                    int index = 0;
-                    while (index < classFields.length()) {
-                        int a = classFields.indexOf(typesOfData.toString(), index);
-                        int b = classFields.indexOf(typesOfData.toString(), index + 1);
-                        stringBuilder.append(classFields.substring(a, b));
-                        index++;
+                    String[] lines = classFields.toString().split("\n");
+                    for(String line: lines){
+                        String[] elements = line.split(";");
+                        System.out.println(Arrays.toString(elements));
                     }
+//                    StringBuilder stringBuilder = new StringBuilder();
+//                    int index = 0;
+//                    while (index < classFields.length()) {
+//                        int a = classFields.indexOf(typesOfData.toString(), index);
+//                        int b = classFields.indexOf(typesOfData.toString(), index + 1);
+//                        stringBuilder.append(classFields.substring(a, b));
+//                        index++;
+//                    }
 
 
                     Pattern pattern = Pattern.compile(typesOfData + ";");
