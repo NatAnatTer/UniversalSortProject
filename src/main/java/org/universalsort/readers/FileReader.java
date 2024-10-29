@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -102,6 +103,7 @@ public class FileReader implements Reader {
                     for(String line: lines){
                         String[] elements = line.split(";");
                         System.out.println(Arrays.toString(elements));
+                        repository.getRepositoryByType(typesOfData).add(Arrays.toString(elements));
                     }
 //                    StringBuilder stringBuilder = new StringBuilder();
 //                    int index = 0;
