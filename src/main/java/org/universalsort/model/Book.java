@@ -19,7 +19,7 @@ public class Book extends UserClass implements Comparable<Book> {
     public String toString() {
         return author  + ";" +
                name + ";" +
-               pagesCount;
+               pagesCount + "\n";
     }
 
 }
