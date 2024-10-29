@@ -1,16 +1,13 @@
 package org.universalsort.readers;
 
 import org.universalsort.data.Repository;
-import org.universalsort.data.RepositoryImpl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 /**
  * Формирует строковую последовательность случайных чисел
- *
  * */
 public class RandomReader {
     public Integer[] getMasIntRnd(int length)throws NegativeArraySizeException{
@@ -27,7 +24,7 @@ public class RandomReader {
     public void getRandom(Repository repository){
         System.out.println("сгенерирована последовательность");
         ArrayList<Integer> arrayList = getRandom(15);
-        System.out.println(Arrays.asList(arrayList));
+        System.out.println(Collections.singletonList(arrayList));
         repository.saveListInteger(arrayList);
         System.out.println(Collections.singletonList(repository.getListInteger()));
     }
