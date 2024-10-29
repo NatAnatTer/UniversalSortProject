@@ -17,11 +17,12 @@ public class SearchService {
     }
 
 
-    public  <T, E extends Comparable<T>> T binarySearch(String field, E value) {
+    public  <T, E extends Comparable<T>> T binarySearch(String field, E value) { //add
         TypesOfData type = repository.getTypesOfData();
             List<T> sortList = new ArrayList<>(repository.getRepositoryByType(type));
             T element = getElement(field, value);
             Comparator<T> comparator = type.getComparator(field);
+           // List<T> result = new ArrayList<>();//new
             int left = 0;
 
             int right = sortList.size() - 1;

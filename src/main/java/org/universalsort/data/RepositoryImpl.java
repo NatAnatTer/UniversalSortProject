@@ -16,14 +16,23 @@ public class RepositoryImpl implements Repository {
             Book.builder().name("O").author("Petya").pagesCount(30).build(),
             Book.builder().name("A").author("Vasya").pagesCount(5).build(),
             Book.builder().name("C").author("Misha").pagesCount(50).build());
-    Collection<Car> listOfCars = new ArrayList<>();
+   // Collection<Car> listOfCars = new ArrayList<>();
+   Collection<Car> listOfCars = List.of(
+           Car.builder().power(1.2).productionYear(2024).model("A").build(),
+           Car.builder().power(1.5).productionYear(2020).model("D").build(),
+           Car.builder().power(1.1).productionYear(2018).model("W").build(),
+           Car.builder().power(1.8).productionYear(2022).model("C").build(),
+           Car.builder().power(2.3).productionYear(2010).model("Q").build(),
+           Car.builder().power(1.0).productionYear(2024).model("O").build(),
+           Car.builder().power(1.4).productionYear(2024).model("I").build()
+   );
     Collection<RootCrop> listOfRootCrops = new ArrayList<>();
 
  //   Collection<Integer> listInteger = new ArrayList<>();
 
     Collection<Integer> listInteger = List.of(3, 7, 3, 2, 6, 1, 8, 4, 0,5 ,8 ,9, 6);
     Collection<String> listOfInputString = new ArrayList<>();
-    TypesOfData typesOfData = TypesOfData.INTEGER;
+    TypesOfData typesOfData = TypesOfData.CAR;
 
     public void clearTypeOfData() {
         typesOfData = null;
