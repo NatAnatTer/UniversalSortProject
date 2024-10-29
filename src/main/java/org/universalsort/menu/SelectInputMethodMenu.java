@@ -40,39 +40,39 @@ public class SelectInputMethodMenu extends Menu {
         boolean keepRunning = true;
         while (keepRunning) {
             int command = Validator.checkMenuInput(SelectInputMethodMenu.this, scanner, 4);
-        // System.out.println(repository.getTypesOfData());
-        switch (command) {
-            case 1:
-                //  clearCollections();
-                selectObjectMenu.selectMenuOption();
-                readWriteService.readConsole();
+            // System.out.println(repository.getTypesOfData());
+            switch (command) {
+                case 1:
+                    //  clearCollections();
+                    selectObjectMenu.selectMenuOption();
+                    readWriteService.readConsole();
 
-                return;
-            case 2:
-                // clearCollections();
-                selectObjectMenu.selectMenuOption();
-                readWriteService.readFromFile();
-                return;
-            case 3:
-                // clearCollections();
-                readWriteService.randomReader();
-                return;
-            case 4:
-                return;
-            default:
-                System.out.printf("Неизвестная команда", command);
+                    return;
+                case 2:
+                    // clearCollections();
+                    selectObjectMenu.selectMenuOption();
+                    readWriteService.readFromFile();
+                    return;
+                case 3:
+                    // clearCollections();
+                    readWriteService.randomReader();
+                    return;
+                case 4:
+                    return;
+                default:
+                    System.out.printf("Неизвестная команда", command);
+            }
         }
+
     }
 
-}
-
-public void clearCollections() {
-    repository.clearTypeOfData();
-    repository.clearListOfBooks();
-    repository.clearListOfCars();
-    repository.clearListOfInteger();
-    repository.clearListOfRootCrop();
-}
+    public void clearCollections() {
+        repository.clearTypeOfData();
+        repository.clearListOfBooks();
+        repository.clearListOfCars();
+        repository.clearListOfInteger();
+        repository.clearListOfRootCrop();
+    }
 
 }
 

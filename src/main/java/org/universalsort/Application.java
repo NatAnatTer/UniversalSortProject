@@ -20,12 +20,10 @@ public class Application {
     private final SortService sortService;
     private final MapperService mapperService;
     private final SearchService searchService;
-    private List<? extends UserClass> objects;
-    private DataType dataType;
 
     private RepositoryImpl repository = new RepositoryImpl();
 
-    public Application(){
+    public Application() {
         Scanner scanner = new Scanner(System.in);
         this.readWriteService = new ReadWriteService(repository);
         this.sortService = new SortService(repository);
@@ -37,25 +35,8 @@ public class Application {
 
     }
 
-    public void start(){menu. selectMenuOption();}
+    public void start() {
+        menu.selectMenuOption();
+    }
 
-//    public <E> Collection<E> inputData(int objectType, int readType) {
-//        Map<DataType, List<String>> list = readWriteService.read(objectType, readType);
-//        dataType = (DataType) list.keySet().toArray()[0];
-//        objects = mapperService.map((DataType) list.keySet().toArray()[0], list.get(dataType));
-//        int a = 1;
-//
-//        //repository save
-//        List<E> returnList  = new ArrayList<>();
-//        //TODO mapper
-//        return returnList;
-//    }
-
-//    public <E extends Comparable> void sortData(Collection<E> collection) {
-//        sortService.sort(collection);
-//    }
-//
-//    public <E extends Comparable> void sortData(Collection<E> collection, Comparator<E> comparator) {
-//        sortService.sort(collection);
-//    }
 }

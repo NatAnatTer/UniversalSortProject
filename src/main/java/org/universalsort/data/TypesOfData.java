@@ -11,17 +11,17 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 public enum TypesOfData {
-    CAR (1, Map.of("power", value -> !value.isBlank() && value.matches("[0-9]+(\\.[0-9]+)?$"),
+    CAR(1, Map.of("power", value -> !value.isBlank() && value.matches("[0-9]+(\\.[0-9]+)?$"),
             "model", value -> !value.isBlank(),
-    "productionYear", value -> !value.isBlank() && value.matches("[0-9]+"))),
-    BOOK (2, Map.of("author", value -> !value.isBlank(),
+            "productionYear", value -> !value.isBlank() && value.matches("[0-9]+"))),
+    BOOK(2, Map.of("author", value -> !value.isBlank(),
             "name", value -> !value.isBlank(),
             "pagesCount", value -> !value.isBlank() && value.matches("[0-9]+"))),
 
-    ROOT_CROP (3, Map.of("type", value -> !value.isBlank(),
+    ROOT_CROP(3, Map.of("type", value -> !value.isBlank(),
             "weight", value -> !value.isBlank() && value.matches("[0-9]+(\\.[0-9]+)?$"),
             "color", value -> !value.isBlank())),
-    INTEGER(4,Map.of());
+    INTEGER(4, Map.of());
 
     public static final String INT_REGEXP = "[0-9]+";
     public static final String DOUBLE_REGEXP = "[0-9]+(\\.[0-9]+)?$";
@@ -39,7 +39,7 @@ public enum TypesOfData {
     }
 
 
-    public <E> Comparator<E> getComparator(String field){
+    public <E> Comparator<E> getComparator(String field) {
 
         Map<String, Comparator<Book>> bookFieldComparator = Map.of("author", new BookAuthorComparator(),
                 "name", new BookNameComparator(),
@@ -51,10 +51,10 @@ public enum TypesOfData {
                 "type", new RootCropTypeComparator(),
                 "weight", new RootCropWeightComparator());
 
-        return switch (this){
+        return switch (this) {
             case CAR -> (Comparator<E>) carFieldComparator.get(field);
             case BOOK -> (Comparator<E>) bookFieldComparator.get(field);
-            case ROOT_CROP ->  (Comparator<E>) rootCropFieldComparator.get(field);
+            case ROOT_CROP -> (Comparator<E>) rootCropFieldComparator.get(field);
             case INTEGER -> null;
         };
 
@@ -79,9 +79,9 @@ public enum TypesOfData {
         }
     }
 
-    public String getListOfFieldName(){
-        return  switch (this){
-            case BOOK ->  "author;name;pagesCount";
+    public String getListOfFieldName() {
+        return switch (this) {
+            case BOOK -> "author;name;pagesCount";
             case CAR -> "power;model;productionYear";
             case ROOT_CROP -> "type;weight;color";
             case INTEGER -> "";

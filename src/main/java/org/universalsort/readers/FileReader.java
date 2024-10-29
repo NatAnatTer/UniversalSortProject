@@ -11,8 +11,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class FileReader implements Reader {
     Path path;
@@ -20,6 +18,7 @@ public class FileReader implements Reader {
     Repository repository;
 
     ArrayList<String> stringArrayList = new ArrayList<>();
+
     public FileReader(Repository repository) {
         this.repository = repository;
     }
@@ -42,8 +41,8 @@ public class FileReader implements Reader {
                     //у нас полседовательность чисел
                     System.out.println("находится в файле: " + classFields);
                     System.out.println("записываем в репозиторий");
-                    while (a < classFields.length()){
-                        b = classFields.indexOf(";", a );
+                    while (a < classFields.length()) {
+                        b = classFields.indexOf(";", a);
                         integerArrayList.add(Integer.valueOf(classFields.substring(a, b)));
                         a = b + 1;
                     }
@@ -51,31 +50,31 @@ public class FileReader implements Reader {
                         stringArrayList.add(integer.toString());
                     }
 
-                }else {
+                } else {
 
                     while (a < classFields.length()) {
 
-                        b = classFields.indexOf(";", a );
-                        if (b == -1){
+                        b = classFields.indexOf(";", a);
+                        if (b == -1) {
                             b = classFields.length();
                         }
                         stringArrayList.add(classFields.substring(a, b));
                         a = b + 1;
                     }
-                    for(String s: stringArrayList){
+                    for (String s : stringArrayList) {
                         System.out.print(s + " ");
                     }
                     System.out.println("\n");
                 }
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             System.out.println("ошибка чтения из файла");
         }
         return stringArrayList;
     }
 
 
-    public void readData(Repository repository)  {
+    public void readData(Repository repository) {
         TypesOfData typesOfData = repository.getTypesOfData();
         try {
             if (Files.isReadable(Paths.get(typesOfData + ".dat"))) {

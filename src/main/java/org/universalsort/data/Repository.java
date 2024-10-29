@@ -10,17 +10,20 @@ import java.util.Collection;
 public interface Repository {
 
 
-
     public void saveBookCollections(Collection<Book> book);
+
     public Collection<Book> getBookCollection();
 
     public void saveCarCollections(Collection<Car> car);
+
     public Collection<Car> getCarCollection();
 
     public void saveRootCropCollections(Collection<RootCrop> rootCrop);
+
     public Collection<RootCrop> getRootCropCollection();
 
     public void saveInputCollections(Collection<String> input);
+
     public Collection<String> getInputCollection();
 
     public <T> Collection<T> getRepositoryByType(TypesOfData type);
@@ -32,10 +35,15 @@ public interface Repository {
     public Collection<Integer> getListInteger();
 
     public void saveListInteger(Collection<Integer> list);
+
     public void clearTypeOfData();
+
     public void clearListOfBooks();
+
     public void clearListOfCars();
+
     public void clearListOfRootCrop();
+
     public void clearListOfInteger();
 
 }
