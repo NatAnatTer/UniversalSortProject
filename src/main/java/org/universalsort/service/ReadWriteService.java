@@ -6,6 +6,12 @@ import org.universalsort.datatypes.BookDataType;
 import org.universalsort.datatypes.CarDataType;
 import org.universalsort.datatypes.RootCropDataType;
 import org.universalsort.datatypes.DataType;
+import org.universalsort.mapers.BookMapper;
+import org.universalsort.mapers.CarMapper;
+import org.universalsort.mapers.RootCropMapper;
+import org.universalsort.model.*;
+import org.universalsort.readers.*;
+import org.universalsort.datatypes.DataType;
 import org.universalsort.model.*;
 import org.universalsort.readers.*;
 
@@ -83,17 +89,59 @@ public class ReadWriteService {
         //  consoleReader.readData(DataType);
         // mapper
 
+
+    public void readConsole() {
+        repository.saveInputCollections(new ConsoleReader().readData(repository.getTypesOfData()));
+        switch (repository.getTypesOfData()) {
+            case BOOK -> new BookMapper(repository).map();
+            case CAR -> new CarMapper(repository).map();
+            case ROOT_CROP -> new RootCropMapper(repository).map();
+        }
     }
 
     public void readFromFile() {
-        fileReader.readData(repository);
+        repository.getTypesOfData();
+        // fileReader.readData(DataType);
     }
 
     public void randomReader() {
-        randomReader.getRandom(repository);
+        System.out.println("сгенерирована последовательность");
+        ArrayList<Integer> arrayList = randomReader.getRandom(15);
+        System.out.println(Arrays.asList(arrayList));
+        repository.saveListInteger(arrayList);
+        System.out.println(Collections.singletonList(repository.getListInteger()));
+        // randomReader.getRandom();
     }
 
-    public void FileWrite() {
-        fileWriter.writeData(repository);
+    public void FileWrite(TypesOfData typesOfData) throws IOException {
+        Path path = Path.of( typesOfData + ".dat");
+        System.out.println(path);
+        if (typesOfData.equals(TypesOfData.INTEGER)){
+            StringBuffer stringBuffer = new StringBuffer();
+            for (Integer i : repository.getListInteger()){
+                stringBuffer.append(i+";");
+            }
+            Files.writeString(path, stringBuffer);
+        }else {
+            StringBuffer stringBuffer = new StringBuffer();
+            repository.getRepositoryByType(typesOfData).forEach((element) -> {
+                stringBuffer.append(element.toString());
+            });
+            Files.writeString(path, stringBuffer);
+        }
+
+//        for (UserClassInterface e : repository.getRepositoryByType(typesOfData)) {
+//            stringBuffer.append(e.toString());
+//        }
+//        repository.getRepositoryByType(typesOfData);
+//        for (Object o : col) {
+//            o.toString();
+//        }
+//        Files.writeString(path, .toString());
+
+
+
+//
+        //вызвать метод записи
     }
 }

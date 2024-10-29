@@ -67,7 +67,12 @@ public class SelectTypeMenu extends Menu {
                     binarySearchOptionMenu.selectMenuOption();
                     break;
                 case 4:
-                    readWriteService.FileWrite();
+                    try {
+                        readWriteService.FileWrite(repository.getTypesOfData());
+                        System.out.println("Данные успешно записаны в файл");
+                    }catch (IOException e){
+                        System.out.println("Ошибка записи");
+                    }
                     break;
                 case 5:
                     keepRunning = false;

@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Формирует строковую последовательность случайных чисел
- * */
+
 public class RandomReader {
     public Integer[] getMasIntRnd(int length)throws NegativeArraySizeException{
         Integer[] integers = new Integer[length];
@@ -20,6 +18,7 @@ public class RandomReader {
     public ArrayList<Integer> getRandom(int length)throws NegativeArraySizeException{
         return new ArrayList<>(List.of(getMasIntRnd(length)));
     }
+
 
     public void getRandom(Repository repository){
         System.out.println("сгенерирована последовательность");

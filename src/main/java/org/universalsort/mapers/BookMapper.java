@@ -28,6 +28,5 @@ public class BookMapper implements Mapper {
             books.add(book);
         }
         repository.saveBookCollections(books);
-       // return books;
     }
 }
