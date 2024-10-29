@@ -51,22 +51,28 @@ public class BinarySearchOptionMenu extends Menu {
                 return;
             }
         } else {
-            if (!value.matches("[0-9]")) {
+            if (!value.matches("[0-9]+")) {
                 System.out.println("Введено недопустимое значение");
                 return;
             }
         }
-        if(typeOfClass == TypesOfData.INTEGER){
+        if (typeOfClass == TypesOfData.INTEGER) {
             sortService.sort();
             searchService.binarySearchWithoutComparator(Integer.parseInt(value));
-        }else {
-           sortService.sort(field);
-            System.out.println(repository.getBookCollection());
-            //searchService.binarySearch(field, value);
-            Object result = searchService.binarySearch(field, value);
+        } else {
+            sortService.sort(field);
+            Object result = searchService.binarySearch(field, getRelatedType(value));
             System.out.println(result);
         }
 
+    }
+
+    Object getRelatedType(String value){
+        if(value.matches(TypesOfData.INT_REGEXP))
+            return Integer.parseInt(value);
+        if(value.matches(TypesOfData.DOUBLE_REGEXP))
+            return Double.parseDouble(value);
+        return value;
     }
 
 }

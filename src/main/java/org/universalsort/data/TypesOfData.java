@@ -11,17 +11,20 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 public enum TypesOfData {
-    CAR (1, Map.of("power", value -> !value.isBlank() && value.matches("/^[0-9]+(\\.[0-9]+)?$"),
+    CAR (1, Map.of("power", value -> !value.isBlank() && value.matches("[0-9]+(\\.[0-9]+)?$"),
             "model", value -> !value.isBlank(),
-    "productionYear", value -> !value.isBlank() && value.matches("[0-9]"))),
+    "productionYear", value -> !value.isBlank() && value.matches("[0-9]+"))),
     BOOK (2, Map.of("author", value -> !value.isBlank(),
             "name", value -> !value.isBlank(),
-            "pagesCount", value -> !value.isBlank() && value.matches("[0-9]"))),
+            "pagesCount", value -> !value.isBlank() && value.matches("[0-9]+"))),
 
     ROOT_CROP (3, Map.of("type", value -> !value.isBlank(),
-            "weight", value -> !value.isBlank() && value.matches("/^[0-9]+(\\.[0-9]+)?$"),
-            "color", value -> !value.isBlank() && value.matches("[0-9]"))),
+            "weight", value -> !value.isBlank() && value.matches("[0-9]+(\\.[0-9]+)?$"),
+            "color", value -> !value.isBlank())),
     INTEGER(4,Map.of());
+
+    public static final String INT_REGEXP = "[0-9]+";
+    public static final String DOUBLE_REGEXP = "[0-9]+(\\.[0-9]+)?$";
 
     int indexOfType;
     Map<String, Predicate<String>> fields;

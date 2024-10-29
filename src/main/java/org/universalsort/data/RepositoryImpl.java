@@ -26,13 +26,22 @@ public class RepositoryImpl implements Repository {
            Car.builder().power(1.0).productionYear(2024).model("O").build(),
            Car.builder().power(1.4).productionYear(2024).model("I").build()
    );
-    Collection<RootCrop> listOfRootCrops = new ArrayList<>();
+  //  Collection<RootCrop> listOfRootCrops = new ArrayList<>();
+
+    Collection<RootCrop> listOfRootCrops = List.of(
+            RootCrop.builder().color("red").type("A").weight(10.4).build(),
+            RootCrop.builder().color("F").type("C").weight(12.4).build(),
+            RootCrop.builder().color("K").type("W").weight(15.4).build(),
+            RootCrop.builder().color("O").type("Q").weight(17.4).build(),
+            RootCrop.builder().color("A").type("Z").weight(11.4).build(),
+            RootCrop.builder().color("p").type("Y").weight(1.4).build()
+    );
 
  //   Collection<Integer> listInteger = new ArrayList<>();
 
     Collection<Integer> listInteger = List.of(3, 7, 3, 2, 6, 1, 8, 4, 0,5 ,8 ,9, 6);
     Collection<String> listOfInputString = new ArrayList<>();
-    TypesOfData typesOfData = TypesOfData.CAR;
+    TypesOfData typesOfData = TypesOfData.ROOT_CROP;
 
     public void clearTypeOfData() {
         typesOfData = null;

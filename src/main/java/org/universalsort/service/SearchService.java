@@ -17,14 +17,12 @@ public class SearchService {
     }
 
 
-    public  <T, E extends Comparable<T>> T binarySearch(String field, E value) { //add
+    public  <T> T binarySearch(String field, Object value) {
         TypesOfData type = repository.getTypesOfData();
             List<T> sortList = new ArrayList<>(repository.getRepositoryByType(type));
             T element = getElement(field, value);
             Comparator<T> comparator = type.getComparator(field);
-           // List<T> result = new ArrayList<>();//new
 
-        //
             int left = 0;
 
             int right = sortList.size() - 1;
@@ -95,7 +93,7 @@ public class SearchService {
                 else model = null;
                 if (field.equalsIgnoreCase("power")) power = d;
                 else power = 0.0;
-                if (field.equalsIgnoreCase("power")) productionYear = i;
+                if (field.equalsIgnoreCase("productionYear")) productionYear = i;
                 else productionYear = 0;
                 object = (T) Car.builder()
                         .model(model)
