@@ -2,11 +2,9 @@ package org.universalsort.service;
 
 import org.universalsort.data.Repository;
 import org.universalsort.data.TypesOfData;
-import org.universalsort.datatypes.DataType;
 import org.universalsort.mapers.BookMapper;
 import org.universalsort.mapers.CarMapper;
 import org.universalsort.mapers.RootCropMapper;
-import org.universalsort.model.*;
 import org.universalsort.readers.*;
 
 import java.io.IOException;
@@ -67,9 +65,5 @@ public class ReadWriteService {
             });
             Files.writeString(path, stringBuffer);
         }
-
-
-//
-        //вызвать метод записи
     }
 }

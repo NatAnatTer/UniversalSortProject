@@ -72,10 +72,10 @@ public class BinarySearchOptionMenu extends Menu {
     }
 
 
-    Object getRelatedType(String value){
-        if(value.matches(TypesOfData.INT_REGEXP))
+    Object getRelatedType(String value) {
+        if (value.matches(TypesOfData.INT_REGEXP))
             return Integer.parseInt(value);
-        if(value.matches(TypesOfData.DOUBLE_REGEXP))
+        if (value.matches(TypesOfData.DOUBLE_REGEXP))
             return Double.parseDouble(value);
         return value;
     }

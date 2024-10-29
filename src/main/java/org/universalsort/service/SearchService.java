@@ -17,33 +17,33 @@ public class SearchService {
     }
 
 
-    public  <T> T binarySearch(String field, Object value) {
+    public <T> T binarySearch(String field, Object value) {
         TypesOfData type = repository.getTypesOfData();
-            List<T> sortList = new ArrayList<>(repository.getRepositoryByType(type));
-            T element = getElement(field, value);
-            Comparator<T> comparator = type.getComparator(field);
+        List<T> sortList = new ArrayList<>(repository.getRepositoryByType(type));
+        T element = getElement(field, value);
+        Comparator<T> comparator = type.getComparator(field);
 
-            int left = 0;
+        int left = 0;
 
-            int right = sortList.size() - 1;
-            while (left <= right) {
-                int mid = left + (right - left) / 2;
-                T obj = sortList.get(mid);
-                int result = comparator.compare(obj, element);
-                if (result == 0) {
-                    System.out.println("Искомое значение найдено");
-                    return obj;
-                } else if (result > 0) {
-                    right = mid - 1;
-                } else {
-                    left = mid + 1;
-                }
+        int right = sortList.size() - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            T obj = sortList.get(mid);
+            int result = comparator.compare(obj, element);
+            if (result == 0) {
+                System.out.println("Искомое значение найдено");
+                return obj;
+            } else if (result > 0) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
             }
+        }
         System.out.println("Искомое значение не найдено");
         return null;
     }
 
-    public  Integer binarySearchWithoutComparator(Integer value) {
+    public Integer binarySearchWithoutComparator(Integer value) {
         TypesOfData type = repository.getTypesOfData();
         List<Integer> sortList = new ArrayList<>(repository.getRepositoryByType(type));
         Integer element = value;

@@ -61,7 +61,7 @@ public class SelectTypeMenu extends Menu {
                     try {
                         readWriteService.fileWrite(repository.getTypesOfData());
                         System.out.println("Данные успешно записаны в файл");
-                    }catch (IOException e){
+                    } catch (IOException e) {
                         System.out.println("Ошибка записи");
                     }
                     break;

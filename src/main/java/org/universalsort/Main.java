@@ -8,6 +8,3 @@ public class Main {
 }
 
 
-// Mapper service
-// Random ReaderFile Writer
-// Search

@@ -57,7 +57,7 @@ public class SortService {
 
     public <T extends Number & Comparable<T>> void sortEven() {
         TypesOfData dataType = repository.getTypesOfData();
-        if(dataType != TypesOfData.INTEGER){
+        if (dataType != TypesOfData.INTEGER) {
             System.out.println("Отсортирую коллекцию только целых чисел"); //TODO experiment of clases
 
         } else {
