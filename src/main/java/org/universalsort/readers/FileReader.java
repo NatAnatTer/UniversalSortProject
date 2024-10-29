@@ -17,6 +17,7 @@ public class FileReader implements Reader {
     StringBuffer classFields = new StringBuffer();
     Repository repository;
 
+    ArrayList<String> stringArrayList = new ArrayList<>();
     public FileReader(Repository repository) {
         this.repository = repository;
     }
@@ -24,7 +25,51 @@ public class FileReader implements Reader {
 
     @Override
     public List<String> readData(TypesOfData dataType) {
-        return new ArrayList<>();
+
+        try {
+            if (Files.isReadable(Paths.get(repository.getTypesOfData() + ".dat"))) {
+                path = Paths.get(repository.getTypesOfData() + ".dat");
+                System.out.println("Файл найден");
+                //читаем из файла
+                System.out.println(path);
+                classFields.append(Files.readString(path));
+                ArrayList<Integer> integerArrayList = new ArrayList<>();
+                int a = 0;
+                int b;
+                if (repository.getTypesOfData().equals(TypesOfData.INTEGER)) {
+                    //у нас полседовательность чисел
+                    System.out.println("находится в файле: " + classFields);
+                    System.out.println("записываем в репозиторий");
+                    while (a < classFields.length()){
+                        b = classFields.indexOf(";", a );
+                        integerArrayList.add(Integer.valueOf(classFields.substring(a, b)));
+                        a = b + 1;
+                    }
+                    for (Integer integer : integerArrayList) {
+                        stringArrayList.add(integer.toString());
+                    }
+
+                }else {
+
+                    while (a < classFields.length()) {
+
+                        b = classFields.indexOf(";", a );
+                        if (b == -1){
+                            b = classFields.length();
+                        }
+                        stringArrayList.add(classFields.substring(a, b));
+                        a = b + 1;
+                    }
+                    for(String s: stringArrayList){
+                        System.out.print(s + " ");
+                    }
+                    System.out.println("\n");
+                }
+            }
+        }catch (IOException e){
+            System.out.println("ошибка чтения из файла");
+        }
+        return stringArrayList;
     }
 
 
