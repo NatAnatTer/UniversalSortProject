@@ -23,6 +23,7 @@ public class BookDataType extends DataType {
             stringBuilder.append(f + " ");
         }
         System.out.println(stringBuilder.toString().trim());
+        System.out.println("Введите значения полей через ;");
     }
 
     @Override

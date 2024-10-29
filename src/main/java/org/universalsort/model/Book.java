@@ -17,10 +17,9 @@ public class Book extends UserClass implements Comparable<Book> {
 
     @Override
     public String toString() {
-        return "Book;" +
-                ";" + author  +
-                ";" + name +
-                ";" + pagesCount;
+        return author  + ";" +
+               name + ";" +
+               pagesCount;
     }
 
 }
