@@ -46,21 +46,21 @@ public class SelectInputMethodMenu extends Menu {
                 showMenuOption();
                 command = Validator.returnMenuValue(scanner.nextLine(), 4);
             }
-            System.out.println(repository.getTypesOfData());
+           // System.out.println(repository.getTypesOfData());
             switch (command) {
                 case 1:
-                    clearCollections();
+                  //  clearCollections();
                     selectObjectMenu.selectMenuOption();
                     readWriteService.readConsole();
 
                     return;
                 case 2:
-                    clearCollections();
+                   // clearCollections();
                     selectObjectMenu.selectMenuOption();
                     readWriteService.readFromFile();
                     return;
                 case 3:
-                    clearCollections();
+                   // clearCollections();
                     readWriteService.randomReader();
                     return;
                 case 4:
@@ -73,7 +73,7 @@ public class SelectInputMethodMenu extends Menu {
     }
 
     public void clearCollections(){
-//        repository.clearTypeOfData();
+        repository.clearTypeOfData();
         repository.clearListOfBooks();
         repository.clearListOfCars();
         repository.clearListOfInteger();

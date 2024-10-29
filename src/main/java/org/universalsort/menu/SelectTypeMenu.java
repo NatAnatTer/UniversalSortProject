@@ -1,16 +1,12 @@
 package org.universalsort.menu;
 
-import org.universalsort.Application;
 import org.universalsort.data.Repository;
 import org.universalsort.service.ReadWriteService;
 import org.universalsort.service.SortService;
 import org.universalsort.service.Validator;
 
 import java.io.IOException;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
 
 public class SelectTypeMenu extends Menu {
 
@@ -68,7 +64,7 @@ public class SelectTypeMenu extends Menu {
                     break;
                 case 4:
                     try {
-                        readWriteService.FileWrite(repository.getTypesOfData());
+                        readWriteService.fileWrite(repository.getTypesOfData());
                         System.out.println("Данные успешно записаны в файл");
                     }catch (IOException e){
                         System.out.println("Ошибка записи");
