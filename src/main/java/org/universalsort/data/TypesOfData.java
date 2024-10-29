@@ -71,13 +71,20 @@ public enum TypesOfData {
     }
 
     public <V> void saveSortedCollection(Collection<V> collection, Repository repository) {
-       // TypesOfData thisTypeOfData = repository.getTypesOfData();
         switch (this) {
             case BOOK -> repository.saveBookCollections((Collection<Book>) collection);
             case CAR -> repository.saveCarCollections((Collection<Car>) collection);
             case ROOT_CROP -> repository.saveRootCropCollections((Collection<RootCrop>) collection);
             case INTEGER -> repository.saveListInteger((Collection<Integer>) collection);
         }
-        ;
+    }
+
+    public String getListOfFieldName(){
+        return  switch (this){
+            case BOOK ->  "author;name;pagesCount";
+            case CAR -> "power;model;productionYear";
+            case ROOT_CROP -> "type;weight;color";
+            case INTEGER -> "";
+        };
     }
 }

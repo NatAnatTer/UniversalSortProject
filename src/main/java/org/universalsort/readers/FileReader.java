@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -97,6 +98,11 @@ public class FileReader implements Reader {
                     repository.saveListInteger(integerArrayList);
                     System.out.println("разбор и запись произведены");
                 } else {
+//                    String[] lines = classFields.toString().split("\n");
+//                    for(String line: lines){
+//                        String[] elements = line.split(",");
+//                        System.out.println(Arrays.toString(elements));
+//                    }
                     StringBuilder stringBuilder = new StringBuilder();
                     int index = 0;
                     while (index < classFields.length()) {

@@ -20,7 +20,7 @@ public class RootCrop extends UserClass implements Comparable<RootCrop> {
     public String toString() {
         return type + ";" +
                weight + ";" +
-               color;
+               color + ";";
     }
 
 }
