@@ -2,15 +2,15 @@ package org.universalsort.readers;
 
 import org.universalsort.data.Repository;
 import org.universalsort.data.TypesOfData;
+import org.universalsort.mapers.BookMapper;
+import org.universalsort.mapers.CarMapper;
+import org.universalsort.mapers.RootCropMapper;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -85,6 +85,7 @@ public class FileReader implements Reader {
                 System.out.println(path);
                 classFields.append(Files.readString(path));
                 ArrayList<Integer> integerArrayList = new ArrayList<>();
+                Collection<String> res = new ArrayList<>();
                 if (typesOfData.equals(TypesOfData.INTEGER)) {
                     //у нас полседовательность чисел
                     System.out.println("находится в файле: " + classFields);
@@ -100,11 +101,8 @@ public class FileReader implements Reader {
                     System.out.println("разбор и запись произведены");
                 } else {
                     String[] lines = classFields.toString().split("\n");
-                    for(String line: lines){
-                        String[] elements = line.split(";");
-                        System.out.println(Arrays.toString(elements));
-                        repository.getRepositoryByType(typesOfData).add(Arrays.toString(elements));
-                    }
+                    Collections.addAll(res, lines);
+
 //                    StringBuilder stringBuilder = new StringBuilder();
 //                    int index = 0;
 //                    while (index < classFields.length()) {
@@ -115,14 +113,18 @@ public class FileReader implements Reader {
 //                    }
 
 
-                    Pattern pattern = Pattern.compile(typesOfData + ";");
-                    Matcher matcher = pattern.matcher(classFields);
-                    List<String> list = new ArrayList<String>();
-                    for (int i = 0; matcher.find(); i++) {
-                        list.add(matcher.group());
+//                    Pattern pattern = Pattern.compile(typesOfData + ";");
+//                    Matcher matcher = pattern.matcher(classFields);
+//                    List<String> list = new ArrayList<String>();
+//                    for (int i = 0; matcher.find(); i++) {
+//                        list.add(matcher.group());
+//                    }
+                    repository.saveInputCollections(res);
+                    switch (typesOfData) {
+                        case BOOK -> new BookMapper(repository).map();
+                        case CAR -> new CarMapper(repository).map();
+                        case ROOT_CROP -> new RootCropMapper(repository).map();
                     }
-
-
                 }
             }
 

@@ -30,7 +30,7 @@ public final class Validator {
 
 
     public static String[] convertString(String string) {
-        return string.split(DELIMITER);
+        return string.replace("[", "").replace("]","").split(DELIMITER);
     }
 
 
