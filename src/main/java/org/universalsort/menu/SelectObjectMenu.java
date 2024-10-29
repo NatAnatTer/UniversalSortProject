@@ -7,6 +7,8 @@ import org.universalsort.service.Validator;
 import java.util.Scanner;
 
 public class SelectObjectMenu extends Menu {
+    private TypesOfData typesOfData;
+
     Repository repository;
 
 
@@ -15,6 +17,7 @@ public class SelectObjectMenu extends Menu {
         this.repository = repository;
 
     }
+
 
     @Override
     public void showMenuOption() {
@@ -30,17 +33,12 @@ public class SelectObjectMenu extends Menu {
 
         boolean keepRunning = true;
         while (keepRunning) {
-            showMenuOption();
-            int command = Validator.returnMenuValue(scanner.nextLine(), 4);
-            while (command == 0) {
-                System.out.println("Неизвестная команда, введите цифру от 1 до 4");
-                showMenuOption();
-                command = Validator.returnMenuValue(scanner.nextLine(), 4);
-            }
+            int command = Validator.checkMenuInput(SelectObjectMenu.this, scanner, 4);
 
             switch (command) {
                 case 1:
                     repository.saveTypesOfData(TypesOfData.CAR);
+                    System.out.println(repository.getTypesOfData());
                     keepRunning = false;
                     break;
                 case 2:
@@ -56,6 +54,7 @@ public class SelectObjectMenu extends Menu {
                 default:
                     System.out.printf("Неизвестная команда", command);
             }
+            //repository.saveTypesOfData(typesOfData); // данное меню записывает в репозиторий какой был выбарн тип объекта
         }
     }
 }
