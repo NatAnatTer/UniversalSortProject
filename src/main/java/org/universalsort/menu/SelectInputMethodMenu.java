@@ -39,46 +39,40 @@ public class SelectInputMethodMenu extends Menu {
     public void selectMenuOption() {
         boolean keepRunning = true;
         while (keepRunning) {
-            showMenuOption();
-            int command = Validator.returnMenuValue(scanner.nextLine(), 4);
-            while (command == 0) {
-                System.out.println("Неизвестная команда, введите цифру от 1 до 4");
-                showMenuOption();
-                command = Validator.returnMenuValue(scanner.nextLine(), 4);
-            }
-           // System.out.println(repository.getTypesOfData());
-            switch (command) {
-                case 1:
-                  //  clearCollections();
-                    selectObjectMenu.selectMenuOption();
-                    readWriteService.readConsole();
+            int command = Validator.checkMenuInput(SelectInputMethodMenu.this, scanner, 4);
+        // System.out.println(repository.getTypesOfData());
+        switch (command) {
+            case 1:
+                //  clearCollections();
+                selectObjectMenu.selectMenuOption();
+                readWriteService.readConsole();
 
-                    return;
-                case 2:
-                   // clearCollections();
-                    selectObjectMenu.selectMenuOption();
-                    readWriteService.readFromFile();
-                    return;
-                case 3:
-                   // clearCollections();
-                    readWriteService.randomReader();
-                    return;
-                case 4:
-                    return;
-                default:
-                    System.out.printf("Неизвестная команда", command);
-            }
+                return;
+            case 2:
+                // clearCollections();
+                selectObjectMenu.selectMenuOption();
+                readWriteService.readFromFile();
+                return;
+            case 3:
+                // clearCollections();
+                readWriteService.randomReader();
+                return;
+            case 4:
+                return;
+            default:
+                System.out.printf("Неизвестная команда", command);
         }
-
     }
 
-    public void clearCollections(){
-        repository.clearTypeOfData();
-        repository.clearListOfBooks();
-        repository.clearListOfCars();
-        repository.clearListOfInteger();
-        repository.clearListOfRootCrop();
-    }
+}
+
+public void clearCollections() {
+    repository.clearTypeOfData();
+    repository.clearListOfBooks();
+    repository.clearListOfCars();
+    repository.clearListOfInteger();
+    repository.clearListOfRootCrop();
+}
 
 }
 

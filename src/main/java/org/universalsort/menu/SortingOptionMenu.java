@@ -22,7 +22,7 @@ public class SortingOptionMenu extends Menu{
     @Override
     public void showMenuOption() {
         System.out.println("Выберите действие: ");
-        System.out.println("1. Обычная сортировка"); //TODO добавить проверку что есть тип данных и коллекция чтобы не падала программа TypesOfData.getCollection(org.universalsort.data.Repository)" because "dataType" is null
+        System.out.println("1. Обычная сортировка");
         System.out.println("2. Сортировка только четных чисел");
         System.out.println("3. Вернуться назад");
     }

@@ -45,12 +45,7 @@ public class SelectTypeMenu extends Menu {
     public void selectMenuOption() {
         boolean keepRunning = true;
         while (keepRunning) {
-            showMenuOption();
-            int command = Validator.returnMenuValue(scanner.nextLine(), 4);//TODO перенести логику в отдельный метод
-            while (command == 0) {
-                showMenuOption();
-                command = Validator.returnMenuValue(scanner.nextLine(), 4);
-            }
+            int command = Validator.checkMenuInput(SelectTypeMenu.this, scanner, 5);
             switch (command) {
                 case 1:
                     selectInputMethodMenu.selectMenuOption();
