@@ -1,10 +1,11 @@
 package org.universalsort.service;
 
-public class Validator {
+import org.universalsort.menu.Menu;
 
-    static final String TEST_CAR = "Car;300.5;Porsche;2021";
-    static final String TEST_BOOK = "Book;Robert Martin;Clean Code;1993";
-    static final String TEST_ROOTCROP = "Rootcrop;Potato;153.4;brown";
+import java.util.Scanner;
+
+public final class Validator {
+
     static final String DELIMITER = ";";
     static final String INCORRECT_DATA = "Некорректный формат входных данных";
     static final String DELIMITER_NOT_CONTAINS = "Строка не содержит ни одного разделителя";
@@ -32,17 +33,6 @@ public class Validator {
         return string.split(DELIMITER);
     }
 
-    public static Integer returnMenuValue(String string, int menuCount) {
-        int i = 0;
-        try {
-            i = Integer.parseInt(string);
-        } catch (NumberFormatException e) {
-        }
-        if (i > 0 && i <= menuCount) {
-            return i;
-        }
-        return 0;
-    }
 
     public static Integer returnIntValue(String string) {
         int i = 0;
@@ -50,7 +40,7 @@ public class Validator {
             i = Integer.parseInt(string);
         } catch (NumberFormatException e) {
         }
-        return 0;
+        return i;
     }
 
 
@@ -64,8 +54,21 @@ public class Validator {
 
     }
 
+    public static int checkMenuInput(Menu menu, Scanner scanner, int count) {
 
-//    public static boolean hasValidCommand(int command) { //TODO
-
+        int command = 0;
+        int i = 0;
+        while (command == 0) {
+            menu.showMenuOption();
+            command = returnIntValue(scanner.nextLine());
+            if (command > 0 && command <= count) {
+                i = command;
+            } else {
+                System.out.printf("Неизвестная команда, введите цифру от 1 до %s%n", count);
+                command = 0;
+            }
+        }
+        return i;
+    }
 }
 
