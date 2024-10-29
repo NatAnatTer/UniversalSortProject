@@ -71,7 +71,7 @@ public class SelectTypeMenu extends Menu {
 //                    select.selectMenuOption();
                     break;
                 case 4:
-                    readWriteService.FileWrite();
+                    readWriteService.fileWrite();
                     break;
                 case 5:
                     keepRunning = false;

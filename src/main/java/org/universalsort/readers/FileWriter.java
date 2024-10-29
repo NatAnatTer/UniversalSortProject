@@ -22,8 +22,9 @@ public class FileWriter implements Writer{
             Files.writeString(path, stringBuffer);
         }else {
             StringBuffer stringBuffer = new StringBuffer();
-            repository.getRepositoryByType(repository.getTypesOfData()).
-                    forEach((element) -> stringBuffer.append(element.toString()));
+            repository.getRepositoryByType(repository.getTypesOfData()).forEach((element) -> {
+                stringBuffer.append(element.toString());
+            });
             Files.writeString(path, stringBuffer);
         }
             System.out.println("Данные успешно записаны в файл");

@@ -93,7 +93,7 @@ public class ReadWriteService {
         randomReader.getRandom(repository);
     }
 
-    public void FileWrite() {
+    public void fileWrite() {
         fileWriter.writeData(repository);
     }
 }
