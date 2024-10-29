@@ -100,7 +100,8 @@ public class ReadWriteService {
     }
 
     public void randomReader() {
-        System.out.println("сгенерирована последовательность");
+        System.out.println("сгенерирована последовательность и выбран тип INTEGER" );
+        repository.saveTypesOfData(TypesOfData.INTEGER);
         ArrayList<Integer> arrayList = randomReader.getRandom(15);
         System.out.println(Arrays.asList(arrayList));
         repository.saveListInteger(arrayList);
