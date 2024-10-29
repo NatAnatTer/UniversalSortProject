@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface Reader {
     List<String> readData(DataType dataType) throws IOException;
+
 }

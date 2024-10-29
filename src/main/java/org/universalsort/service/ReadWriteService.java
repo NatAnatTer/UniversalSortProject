@@ -24,7 +24,7 @@ public class ReadWriteService {
     private Reader reader;
 
     ConsoleReader consoleReader = new ConsoleReader();
-    FileReader fileReader = new FileReader();
+    FileReader fileReader;
 
     FileWriter fileWriter = new FileWriter();
     RandomReader randomReader = new RandomReader();
@@ -40,6 +40,8 @@ public class ReadWriteService {
         this.dataTypes.add(new RootCropDataType());
         this.repository = repository;
 
+        fileReader = new FileReader(repository);
+
     }
 
     public Map<DataType, List<String>> read(int readWhat, int readFrom) {
@@ -54,7 +56,7 @@ public class ReadWriteService {
         } else if (readFrom == 2) {
             try{
                 DataType dt = dataTypes.get(dataType - 1);
-                List<String> lst = new FileReader().readData(dataTypes.get(dataType - 1));
+                List<String> lst = new FileReader(repository).readData(dataTypes.get(dataType - 1));
                 HashMap<DataType, List<String>> map = new HashMap<>();
                 map.put(dt, lst);
                 return map;
@@ -84,15 +86,14 @@ public class ReadWriteService {
     }
 
     public void readFromFile() {
-//        fileReader.readData(repository);
+        fileReader.readData(repository);
     }
 
     public void randomReader() {
-            randomReader.getRandom(repository);
+        randomReader.getRandom(repository);
     }
 
     public void FileWrite() {
         fileWriter.writeData(repository);
-        //вызвать метод записи
     }
 }

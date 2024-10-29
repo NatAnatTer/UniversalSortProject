@@ -68,7 +68,7 @@ public class SelectInputMethodMenu extends Menu {
                     return;
                 case 2:
                     clearCollections();
-                    selectObjectMenu.selectMenuOption();
+//                    selectObjectMenu.selectMenuOption();
                     readWriteService.readFromFile();
                     //application.inputData(objectType, 2);
                     return;// создаем диалог с пользователем, в котором спрашиваем 1. Поиск, 2. Сортировка, 3. сохранить коллекцию в файл
