@@ -19,7 +19,7 @@ public class ConsoleReader implements Reader {
         }
         sb.substring(sb.length() - 1);
         System.out.println(sb.toString());
-        System.out.println("Ыыедите stop для прекращения ввода");
+        System.out.println("Введите stop для прекращения ввода");
         String inputString;
         Scanner scanner = new Scanner(System.in);
         while (true) {
