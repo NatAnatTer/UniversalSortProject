@@ -26,7 +26,7 @@ public class ReadWriteService {
     ConsoleReader consoleReader = new ConsoleReader();
     FileReader fileReader = new FileReader();
 
-    // RandomReader randomReader;
+    FileWriter fileWriter = new FileWriter();
     RandomReader randomReader = new RandomReader();
     Repository repository;
 
@@ -92,26 +92,7 @@ public class ReadWriteService {
     }
 
     public void FileWrite() {
-        try {
-        Path path = Path.of( repository.getTypesOfData() + ".dat");
-        System.out.println(path);
-        if (repository.getTypesOfData().equals(TypesOfData.INTEGER)){
-            StringBuffer stringBuffer = new StringBuffer();
-            for (Integer i : repository.getListInteger()){
-                stringBuffer.append(i+";");
-            }
-            Files.writeString(path, stringBuffer);
-        }else {
-            StringBuffer stringBuffer = new StringBuffer();
-            repository.getRepositoryByType(repository.getTypesOfData()).forEach((element) -> {
-                stringBuffer.append(element.toString());
-            });
-            Files.writeString(path, stringBuffer);
-        }
-            System.out.println("Данные успешно записаны в файл");
-        }catch (IOException e){
-            System.out.println("Ошибка записи");
-        }
+        fileWriter.writeData(repository);
         //вызвать метод записи
     }
 }
