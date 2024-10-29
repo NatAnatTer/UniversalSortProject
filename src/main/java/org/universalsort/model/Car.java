@@ -20,6 +20,6 @@ public class Car extends UserClass implements Comparable<Car> {
     public String toString() {
         return power  + ";" +
                model + ";" +
-               productionYear + ";";
+               productionYear + "\n";
     }
 }
