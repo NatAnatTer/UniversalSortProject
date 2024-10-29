@@ -1,7 +1,6 @@
 package org.universalsort.readers;
 
 import org.universalsort.data.TypesOfData;
-import org.universalsort.datatypes.DataType;
 import org.universalsort.service.Validator;
 
 import java.util.ArrayList;
@@ -13,7 +12,6 @@ public class ConsoleReader implements Reader {
     public List<String> readData(TypesOfData dataType) {
         List<String> list = new ArrayList<>();
         System.out.println("Формат строки:");
-        StringBuilder sb = new StringBuilder();
         System.out.println(dataType.getListOfFieldName());
         System.out.println("Введите stop для прекращения ввода");
         String inputString;
